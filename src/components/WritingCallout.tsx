@@ -13,7 +13,7 @@ export function WritingCallout() {
     >
       {/* Decorative retro-pop shapes. */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <Sunburst className="animate-pop-spin absolute -left-24 -top-24 h-96 w-96 text-magenta/40" />
+        <Sunburst className="animate-pop-spin absolute -left-32 -top-32 h-96 w-96 text-magenta/25" />
         <Blob className="animate-pop-float absolute -right-16 bottom-0 h-72 w-72 text-yellow/25" />
         <Dot className="absolute right-1/4 top-12 h-8 w-8 text-yellow" />
       </div>
