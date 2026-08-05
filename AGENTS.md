@@ -47,6 +47,28 @@ and truthful.
 10. **Never commit secrets or sensitive personal information.** No API keys,
     tokens, phone numbers, home addresses, or private health data.
 
+## Visual identity
+
+The design direction is **"Modern Psychedelic Pop meets polished editorial
+portfolio"** — bold, joyful, and expressive, grounded by navy/ivory/ink. Do not
+flatten it back into a beige, minimalist, or generic consulting look.
+
+- The saturated palette (magenta, tangerine, electric purple, sunny yellow,
+  peach, columbia blue) is central. Use bright colors in confident, intentional
+  blocks with plenty of breathing room — not one of every color per section.
+- Design tokens live in `src/app/globals.css` (`@theme`). Reusable decorative
+  primitives (blobs, arches, sunbursts, rings, waves, checkerboard) live in
+  `src/components/decor.tsx`; per-project accents live in
+  `src/lib/project-accents.ts`. Build visual identity from CSS/SVG shapes,
+  typography, and layout — never generic stock graphics, AI-brain/robot art,
+  or copied illustrations.
+- **Contrast discipline:** never place small text on a bright background. Keep
+  small/body text on light (ivory/columbia) or dark (navy/ink/purple)
+  backgrounds; reserve bright blocks (yellow/tangerine/magenta) for oversized
+  display text or decoration. Verify WCAG AA before shipping color changes.
+- Keep motion restrained and gated on `prefers-reduced-motion` (see the
+  `.animate-pop-*` classes, which freeze under reduced motion).
+
 ## Deployment notes
 
 - Deployment is via `.github/workflows/deploy.yml` (GitHub Actions → Pages).

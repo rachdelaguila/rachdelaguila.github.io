@@ -94,7 +94,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
                     <Link
                       href={item.href}
                       onClick={close}
-                      className="block rounded-md px-2 py-3 font-serif text-2xl text-navy transition-colors hover:text-coral"
+                      className="block rounded-md px-2 py-3 font-serif text-2xl text-navy transition-colors hover:text-magenta"
                     >
                       {item.label}
                     </Link>

@@ -53,6 +53,8 @@ export const site = {
   hero: {
     eyebrow: "AI product strategy & technical product building",
     heading: "Rachelle Del Aguila",
+    /** Playful editorial phrase used as a rotated accent in the hero. */
+    tagline: "Products, systems & ideas built for real people",
     positioning:
       "I build and strategize AI products at the intersection of enterprise systems, trustworthy AI, and operational transformation.",
     supporting:

@@ -6,17 +6,17 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-navy/10 bg-ivory">
-      <div className="mx-auto max-w-6xl px-6 py-12 lg:px-8">
+    <footer className="bg-ink text-ivory">
+      <div className="mx-auto max-w-6xl px-6 py-14 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-sm">
             <Link
               href="/#top"
-              className="font-serif text-lg font-semibold tracking-tight text-navy"
+              className="focus-on-dark font-serif text-xl font-semibold tracking-tight text-ivory"
             >
-              {site.name}
+              Rachelle <span className="text-magenta">Del Aguila</span>
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
+            <p className="mt-3 text-sm leading-relaxed text-ivory/70">
               {site.role}.
             </p>
           </div>
@@ -27,7 +27,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="rounded-sm text-sm font-medium text-muted transition-colors hover:text-navy"
+                    className="focus-on-dark rounded-sm text-sm font-medium text-ivory/80 transition-colors hover:text-yellow"
                   >
                     {item.label}
                   </Link>
@@ -46,7 +46,7 @@ export function Footer() {
                       {...(isMail
                         ? {}
                         : { target: "_blank", rel: "noopener noreferrer" })}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy/15 text-navy transition-colors hover:border-navy/35 hover:bg-navy/5"
+                      className="focus-on-dark inline-flex h-10 w-10 items-center justify-center rounded-full border border-ivory/25 text-ivory transition-colors hover:border-yellow hover:text-yellow"
                     >
                       <Icon width={18} height={18} />
                     </a>
@@ -57,7 +57,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-navy/10 pt-6 text-sm text-muted">
+        <div className="mt-10 border-t border-ivory/15 pt-6 text-sm text-ivory/60">
           <p>
             © {year} {site.name}. Built with Next.js and deployed on GitHub
             Pages.

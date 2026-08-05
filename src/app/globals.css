@@ -1,21 +1,33 @@
 @import "tailwindcss";
 
 /*
- * Editorial palette and design tokens.
- * Colors are exposed to Tailwind via @theme so utilities like `bg-navy`,
- * `text-ivory`, and `border-navy/10` are available across the site.
+ * "Modern Psychedelic Pop meets polished editorial portfolio."
+ *
+ * Navy, ivory, and ink ground the site and preserve credibility; the
+ * saturated colors are used in confident, intentional blocks. Colors are
+ * exposed to Tailwind via @theme so utilities like `bg-magenta`, `text-yellow`,
+ * and `border-navy/10` are available across the site.
  */
 @theme {
+  /* Grounding */
   --color-navy: #173a5e;
-  --color-navy-700: #1f4a76;
-  --color-columbia: #b9d9eb;
-  --color-columbia-soft: #d7e9f4;
+  --color-navy-700: #12314f;
   --color-ivory: #f7f4ee;
   --color-ivory-deep: #efe9df;
-  --color-coral: #c97b6d;
-  --color-coral-soft: #e2a99f;
-  --color-ink: #1b2733;
-  --color-muted: #4a5a6a;
+  --color-ink: #201d2b;
+  --color-muted: #4a4756;
+
+  /* Saturated editorial system */
+  --color-magenta: #e83e8c;
+  --color-magenta-700: #c92d73;
+  --color-tangerine: #f36f32;
+  --color-purple: #7047eb;
+  --color-purple-700: #5a34c9;
+  --color-yellow: #f6cf3c;
+  --color-peach: #f7b8a4;
+  --color-peach-soft: #fbe4da;
+  --color-columbia: #b9d9eb;
+  --color-columbia-soft: #d7e9f4;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
@@ -28,7 +40,6 @@
 
 html {
   scroll-behavior: smooth;
-  /* Keep anchored sections clear of the sticky header. */
   scroll-padding-top: 5.5rem;
   color-scheme: light;
 }
@@ -39,9 +50,37 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Prevent decorative shapes from causing horizontal scroll. */
+  overflow-x: hidden;
 }
 
-/* Respect users who prefer reduced motion: disable smooth scroll + transitions. */
+/* ---- Decorative motion (opt-in via classes) ---------------------------- */
+@keyframes pop-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pop-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-pop-float {
+  animation: pop-float 9s ease-in-out infinite;
+}
+
+.animate-pop-spin {
+  animation: pop-spin 48s linear infinite;
+  transform-origin: center;
+}
+
+/* Respect reduced motion: freeze decorative animation + transitions. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -59,16 +98,35 @@ body {
 
 /* Visible, consistent keyboard focus across interactive elements. */
 :focus-visible {
-  outline: 2px solid var(--color-navy);
+  outline: 3px solid var(--color-purple);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-/* Utility: fluid editorial display sizing for large headings. */
+/* Focus rings on dark/vivid backgrounds need a light outline. */
+.focus-on-dark:focus-visible {
+  outline-color: var(--color-yellow);
+}
+
 .text-balance {
   text-wrap: balance;
 }
 
 .text-pretty {
   text-wrap: pretty;
+}
+
+/* Retro checkerboard fill, used sparingly as a graphic motif. */
+.motif-checker {
+  background-image:
+    linear-gradient(45deg, currentColor 25%, transparent 25%),
+    linear-gradient(-45deg, currentColor 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, currentColor 75%),
+    linear-gradient(-45deg, transparent 75%, currentColor 75%);
+  background-size: 16px 16px;
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
 }

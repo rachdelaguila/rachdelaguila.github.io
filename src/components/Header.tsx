@@ -30,7 +30,7 @@ export function Header() {
           href="/#top"
           className="rounded-sm font-serif text-lg font-semibold tracking-tight text-navy"
         >
-          {site.name}
+          Rachelle <span className="text-magenta">Del Aguila</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
@@ -48,7 +48,7 @@ export function Header() {
             <li>
               <Link
                 href={`mailto:${site.links.email}`}
-                className="ml-2 rounded-md border border-navy/20 px-3.5 py-2 text-sm font-medium text-navy transition-colors hover:border-navy/40 hover:bg-navy/5"
+                className="ml-2 rounded-full bg-yellow px-4 py-2 text-sm font-semibold text-ink shadow-[3px_3px_0_0_var(--color-navy)] transition-colors hover:bg-tangerine"
               >
                 Get in touch
               </Link>
