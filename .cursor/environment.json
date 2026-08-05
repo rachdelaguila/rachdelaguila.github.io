@@ -1,0 +1,12 @@
+{
+  "name": "rachdelaguila.github.io (Jekyll / GitHub Pages)",
+  "user": "ubuntu",
+  "install": "sudo apt-get update && sudo apt-get install -y --no-install-recommends ruby-full build-essential zlib1g-dev git curl ca-certificates && export GEM_HOME=\"$HOME/.gem\" && export PATH=\"$HOME/.gem/bin:$PATH\" && gem install bundler --no-document && bundle install",
+  "terminals": [
+    {
+      "name": "jekyll-serve",
+      "command": "export GEM_HOME=\"$HOME/.gem\" && export PATH=\"$HOME/.gem/bin:$PATH\" && bundle exec jekyll serve --host 0.0.0.0 --port 4000 --livereload"
+    }
+  ],
+  "ports": [4000, 35729]
+}
