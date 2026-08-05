@@ -8,5 +8,8 @@
       "command": "export GEM_HOME=\"$HOME/.gem\" && export PATH=\"$HOME/.gem/bin:$PATH\" && bundle exec jekyll serve --host 0.0.0.0 --port 4000 --livereload"
     }
   ],
-  "ports": [4000, 35729]
+  "ports": [
+    { "name": "jekyll", "port": 4000 },
+    { "name": "livereload", "port": 35729 }
+  ]
 }
