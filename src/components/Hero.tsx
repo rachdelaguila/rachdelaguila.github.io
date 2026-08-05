@@ -14,15 +14,16 @@ export function Hero() {
       aria-labelledby="hero-heading"
       className="relative overflow-hidden bg-cream"
     >
-      {/* Mobile-only cropped corner shapes, pinned to the corner above the
-          headline so they never sit behind text. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-0 lg:hidden">
-        <Dot className="absolute -right-14 -top-14 h-36 w-36 text-purple" />
-        <Sunburst className="animate-pop-spin absolute -right-6 -top-6 h-24 w-24 text-yellow" />
-      </div>
-
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 pb-20 pt-24 sm:pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:px-8 lg:py-28">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 pb-20 pt-20 sm:pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:px-8 lg:py-28">
         <div className="relative z-10 max-w-2xl">
+          {/* Mobile-only in-flow decorative row (never overlaps text). */}
+          <div aria-hidden className="mb-7 flex items-center gap-3 lg:hidden">
+            <Sunburst className="animate-pop-spin h-12 w-12 text-tangerine" />
+            <Dot className="h-6 w-6 text-magenta" />
+            <div className="h-8 w-8 rotate-6 border-2 border-ink motif-checker text-ink/80" />
+            <Rings className="h-9 w-9 text-purple" />
+          </div>
+
           <Eyebrow>{hero.eyebrow}</Eyebrow>
 
           <h1
