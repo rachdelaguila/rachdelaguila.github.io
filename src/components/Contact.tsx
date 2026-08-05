@@ -1,7 +1,7 @@
 import { site, socialLinks } from "@/content/site";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowUpRightIcon, iconForLabel } from "@/components/icons";
-import { Dot, Rings, WaveDivider } from "@/components/decor";
+import { Rings, WaveDivider } from "@/components/decor";
 
 export function Contact() {
   const { contact, links } = site;
@@ -10,41 +10,36 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative overflow-hidden bg-ivory"
+      className="reveal relative overflow-hidden bg-peach"
     >
-      {/* Purple wave drips down from the writing centerpiece. */}
-      <WaveDivider className="text-purple" flip />
+      {/* Wavy transition from cream into peach. */}
+      <WaveDivider className="-mt-px text-peach" flip />
 
       <Rings
         aria-hidden
-        className="pointer-events-none absolute right-6 bottom-10 hidden h-28 w-28 text-tangerine/70 lg:block"
-      />
-      <Dot
-        aria-hidden
-        className="pointer-events-none absolute left-6 top-28 hidden h-6 w-6 text-magenta lg:block"
+        className="animate-pop-float pointer-events-none absolute right-8 bottom-12 hidden h-28 w-28 text-purple lg:block"
       />
 
-      <div className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-8 lg:px-8">
+      <div className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <SectionHeading
             id="contact-heading"
             eyebrow={contact.heading}
-            eyebrowClassName="text-magenta"
-            title={contact.lead}
+            title={
+              <>
+                Get in <em className="italic text-magenta">touch</em>
+              </>
+            }
             description={contact.description}
           />
 
           <div className="lg:pt-2">
             <a
               href={`mailto:${links.email}`}
-              className="group inline-flex items-center gap-2 font-serif text-2xl font-semibold text-magenta transition-colors hover:text-purple sm:text-3xl"
+              className="font-display group inline-flex items-center gap-2 text-2xl text-magenta transition-colors hover:text-purple sm:text-3xl"
             >
               {links.email}
-              <ArrowUpRightIcon
-                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                width={22}
-                height={22}
-              />
+              <ArrowUpRightIcon width={22} height={22} />
             </a>
 
             <ul className="mt-8 flex flex-wrap gap-3">
@@ -59,7 +54,7 @@ export function Contact() {
                       {...(isMail
                         ? {}
                         : { target: "_blank", rel: "noopener noreferrer" })}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-4 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-navy hover:text-ivory"
+                      className="hover-pop inline-flex items-center gap-2 rounded-full border-2 border-ink bg-cream px-4 py-2.5 text-sm font-bold text-ink shadow-pop-sm hover:bg-ink hover:text-cream"
                     >
                       <Icon width={18} height={18} />
                       {link.label}

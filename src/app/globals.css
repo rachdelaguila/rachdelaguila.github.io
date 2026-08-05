@@ -1,40 +1,34 @@
 @import "tailwindcss";
 
 /*
- * "Modern Psychedelic Pop meets polished editorial portfolio."
- *
- * Navy, ivory, and ink ground the site and preserve credibility; the
- * saturated colors are used in confident, intentional blocks. Colors are
- * exposed to Tailwind via @theme so utilities like `bg-magenta`, `text-yellow`,
- * and `border-navy/10` are available across the site.
+ * "Modern Psychedelic Pop": 70s retro-pop meets editorial fashion magazine.
+ * Cream/peach backgrounds hold most of the viewport; brights sit on top and
+ * pop. Ink is used for all body text, borders, and hard offset shadows.
+ * Design tokens live here and are consumed via Tailwind utilities
+ * (e.g. `bg-cream`, `text-ink`, `border-ink`, `bg-magenta`).
  */
 @theme {
-  /* Grounding */
-  --color-navy: #173a5e;
-  --color-navy-700: #12314f;
-  --color-ivory: #f7f4ee;
-  --color-ivory-deep: #efe9df;
-  --color-ink: #201d2b;
-  --color-muted: #4a4756;
+  /* Backgrounds */
+  --color-cream: #fff4e3;
+  --color-peach: #ffd9be;
 
-  /* Saturated editorial system */
-  --color-magenta: #e83e8c;
-  --color-magenta-700: #c92d73;
-  --color-tangerine: #f36f32;
-  --color-purple: #7047eb;
-  --color-purple-700: #5a34c9;
-  --color-yellow: #f6cf3c;
-  --color-peach: #f7b8a4;
-  --color-peach-soft: #fbe4da;
-  --color-columbia: #b9d9eb;
-  --color-columbia-soft: #d7e9f4;
+  /* Brights */
+  --color-tangerine: #ff6b2c;
+  --color-magenta: #e62e87;
+  --color-magenta-700: #c01f6e;
+  --color-purple: #6b2fd9;
+  --color-purple-700: #571fb0;
+  --color-yellow: #ffc700;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Ink: text, borders, shadows */
+  --color-ink: #221c4e;
+
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
 }
 
 :root {
-  --background: var(--color-ivory);
+  --background: var(--color-cream);
   --foreground: var(--color-ink);
 }
 
@@ -50,34 +44,137 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* Prevent decorative shapes from causing horizontal scroll. */
   overflow-x: hidden;
 }
 
-/* ---- Decorative motion (opt-in via classes) ---------------------------- */
+/* ---- Display type: Fraunces, heavy, tight, optical size maxed ---------- */
+.font-display {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+
+/* ---- Retro print craft ------------------------------------------------- */
+.shadow-pop {
+  box-shadow: 5px 5px 0 0 var(--color-ink);
+}
+.shadow-pop-sm {
+  box-shadow: 3px 3px 0 0 var(--color-ink);
+}
+/* Hover lift for buttons/cards: move up-left, shadow grows. */
+.hover-pop {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+.hover-pop:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 var(--color-ink);
+}
+
+/* Wavy magenta underline for nav links. */
+.squiggle {
+  text-decoration-line: none;
+  text-underline-offset: 6px;
+}
+.squiggle:hover {
+  text-decoration: underline wavy var(--color-magenta);
+  text-decoration-thickness: 2px;
+}
+
+/* Retro checkerboard patch. */
+.motif-checker {
+  background-image:
+    linear-gradient(45deg, currentColor 25%, transparent 25%),
+    linear-gradient(-45deg, currentColor 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, currentColor 75%),
+    linear-gradient(-45deg, transparent 75%, currentColor 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+/* Full-page film grain: fixed, subtle, multiplies over everything. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* ---- Motion (opt-in via classes) --------------------------------------- */
 @keyframes pop-float {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-14px);
+    transform: translateY(-8px);
   }
 }
-
 @keyframes pop-spin {
   to {
     transform: rotate(360deg);
   }
 }
-
-.animate-pop-float {
-  animation: pop-float 9s ease-in-out infinite;
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+.animate-pop-float {
+  animation: pop-float 7s ease-in-out infinite;
+}
+.animate-pop-float-slow {
+  animation: pop-float 9s ease-in-out infinite;
+}
 .animate-pop-spin {
-  animation: pop-spin 48s linear infinite;
+  animation: pop-spin 60s linear infinite;
   transform-origin: center;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/*
+ * Scroll-in reveal. Guarded by @supports so browsers without scroll-driven
+ * animations (and reduced-motion users) render content fully visible.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: fade-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 22%;
+    }
+  }
 }
 
 /* Respect reduced motion: freeze decorative animation + transitions. */
@@ -85,7 +182,6 @@ body {
   html {
     scroll-behavior: auto;
   }
-
   *,
   *::before,
   *::after {
@@ -96,14 +192,12 @@ body {
   }
 }
 
-/* Visible, consistent keyboard focus across interactive elements. */
+/* Visible, consistent keyboard focus. */
 :focus-visible {
-  outline: 3px solid var(--color-purple);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
-
-/* Focus rings on dark/vivid backgrounds need a light outline. */
 .focus-on-dark:focus-visible {
   outline-color: var(--color-yellow);
 }
@@ -111,22 +205,6 @@ body {
 .text-balance {
   text-wrap: balance;
 }
-
 .text-pretty {
   text-wrap: pretty;
-}
-
-/* Retro checkerboard fill, used sparingly as a graphic motif. */
-.motif-checker {
-  background-image:
-    linear-gradient(45deg, currentColor 25%, transparent 25%),
-    linear-gradient(-45deg, currentColor 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, currentColor 75%),
-    linear-gradient(-45deg, transparent 75%, currentColor 75%);
-  background-size: 16px 16px;
-  background-position:
-    0 0,
-    0 8px,
-    8px -8px,
-    -8px 0;
 }

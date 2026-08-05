@@ -29,7 +29,6 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Move focus into the dialog for keyboard users.
     closeRef.current?.focus();
 
     return () => {
@@ -52,7 +51,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={open ? "Close menu" : "Open menu"}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-md text-navy transition-colors hover:bg-navy/5"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink transition-colors hover:bg-ink/5"
       >
         {open ? <CloseIcon /> : <MenuIcon />}
       </button>
@@ -64,25 +63,23 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
             aria-label="Close menu"
             tabIndex={-1}
             onClick={close}
-            className="absolute inset-0 h-full w-full cursor-default bg-navy/30"
+            className="absolute inset-0 h-full w-full cursor-default bg-ink/30"
           />
           <div
             id={panelId}
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation"
-            className="absolute inset-x-0 top-0 border-b border-navy/10 bg-ivory px-6 pb-8 pt-4 shadow-lg"
+            className="absolute inset-x-0 top-0 border-b-2 border-ink bg-cream px-6 pb-8 pt-4 shadow-pop"
           >
             <div className="flex items-center justify-between">
-              <span className="font-serif text-lg font-semibold text-navy">
-                Menu
-              </span>
+              <span className="font-display text-lg text-ink">Menu</span>
               <button
                 ref={closeRef}
                 type="button"
                 onClick={close}
                 aria-label="Close menu"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-navy transition-colors hover:bg-navy/5"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink transition-colors hover:bg-ink/5"
               >
                 <CloseIcon />
               </button>
@@ -94,7 +91,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
                     <Link
                       href={item.href}
                       onClick={close}
-                      className="block rounded-md px-2 py-3 font-serif text-2xl text-navy transition-colors hover:text-magenta"
+                      className="block rounded-md px-2 py-3 font-display text-3xl text-ink transition-colors hover:text-magenta"
                     >
                       {item.label}
                     </Link>

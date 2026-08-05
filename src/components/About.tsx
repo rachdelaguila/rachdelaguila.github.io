@@ -1,30 +1,45 @@
 import { site } from "@/content/site";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ArcStack } from "@/components/decor";
+import { Chip, Sticker } from "@/components/ui";
+import { ArcStack, WaveDivider } from "@/components/decor";
 
 export function About() {
   const { about } = site;
-  const dots = ["bg-magenta", "bg-purple", "bg-tangerine", "bg-navy"];
+  const accents = ["magenta", "purple", "tangerine", "yellow"] as const;
 
   return (
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative overflow-hidden bg-columbia-soft"
+      className="reveal relative overflow-hidden bg-peach"
     >
+      {/* Wavy transition from the cream work section into peach. */}
+      <WaveDivider className="-mt-px text-peach" flip />
+
       <ArcStack
         aria-hidden
-        className="animate-pop-float pointer-events-none absolute -right-6 top-10 hidden h-40 w-40 text-magenta/70 sm:block"
+        className="animate-pop-float pointer-events-none absolute -right-4 top-16 hidden h-40 w-40 text-magenta lg:block"
       />
-      <div className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20 sm:py-24 lg:px-8">
+
+      <div className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <SectionHeading
-            id="about-heading"
-            eyebrow="About"
-            eyebrowClassName="text-magenta"
-            title={about.lead}
-            className="max-w-md"
-          />
+          <div className="relative">
+            <SectionHeading
+              id="about-heading"
+              eyebrow="About"
+              title={
+                <>
+                  A builder and strategist who is happiest where technology
+                  meets <em className="italic text-magenta">hard</em>, human
+                  problems.
+                </>
+              }
+              className="max-w-md"
+            />
+            <Sticker color="yellow" decorative className="mt-6 -rotate-3">
+              MBA · Columbia ✦
+            </Sticker>
+          </div>
 
           <div>
             <div className="space-y-5 text-lg leading-relaxed text-ink text-pretty">
@@ -34,20 +49,13 @@ export function About() {
             </div>
 
             <div className="mt-8">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-navy">
+              <h3 className="text-[12px] font-bold uppercase tracking-[0.15em] text-ink">
                 Focus areas
               </h3>
-              <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+              <ul className="mt-4 flex flex-wrap gap-2.5">
                 {about.focus.map((item, index) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-3 rounded-full bg-ivory/70 px-4 py-2 text-base font-medium text-navy"
-                  >
-                    <span
-                      aria-hidden
-                      className={`h-2.5 w-2.5 flex-none rounded-full ${dots[index % dots.length]}`}
-                    />
-                    {item}
+                  <li key={item}>
+                    <Chip accent={accents[index % accents.length]}>{item}</Chip>
                   </li>
                 ))}
               </ul>

@@ -1,17 +1,14 @@
 import type { ShapeName } from "@/components/decor";
 
 /**
- * Presentation-only visual accents per project (kept out of `content/` so the
- * content stays purely editorial). Contrast note: colored blocks only ever
- * carry large text (oversized numbers / headings), and small text lives on
- * light backgrounds, so every pairing here stays readable.
+ * Presentation-only visual accents per project (kept out of `content/`).
+ * Contrast note: on the project-page header the block carries small text, so
+ * `onBlock` is chosen to meet AA on that block (e.g. magenta uses the deeper
+ * magenta-700 so cream text stays ≥4.5:1).
  */
 export type ProjectAccent = {
-  /** Colored "cover"/band background. */
   block: string;
-  /** Text color that sits on `block` (oversized text only). */
   onBlock: string;
-  /** Accent underline color (on light backgrounds). */
   bar: string;
   shape: ShapeName;
   shapeColor: string;
@@ -20,7 +17,7 @@ export type ProjectAccent = {
 const ACCENTS: Record<string, ProjectAccent> = {
   almaos: {
     block: "bg-purple",
-    onBlock: "text-ivory",
+    onBlock: "text-cream",
     bar: "bg-purple",
     shape: "blob",
     shapeColor: "text-peach",
@@ -28,20 +25,20 @@ const ACCENTS: Record<string, ProjectAccent> = {
   "enterprise-ai-adoption": {
     block: "bg-yellow",
     onBlock: "text-ink",
-    bar: "bg-navy",
+    bar: "bg-ink",
     shape: "rings",
-    shapeColor: "text-navy",
+    shapeColor: "text-ink",
   },
   "trading-technology": {
     block: "bg-tangerine",
     onBlock: "text-ink",
     bar: "bg-tangerine",
     shape: "arch",
-    shapeColor: "text-columbia",
+    shapeColor: "text-cream",
   },
   "symsense-ai": {
-    block: "bg-magenta",
-    onBlock: "text-ivory",
+    block: "bg-magenta-700",
+    onBlock: "text-cream",
     bar: "bg-magenta",
     shape: "dot",
     shapeColor: "text-yellow",
@@ -49,9 +46,9 @@ const ACCENTS: Record<string, ProjectAccent> = {
 };
 
 const DEFAULT_ACCENT: ProjectAccent = {
-  block: "bg-navy",
-  onBlock: "text-ivory",
-  bar: "bg-navy",
+  block: "bg-purple",
+  onBlock: "text-cream",
+  bar: "bg-purple",
   shape: "dot",
   shapeColor: "text-yellow",
 };

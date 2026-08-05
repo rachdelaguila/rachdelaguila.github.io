@@ -61,8 +61,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article>
-      {/* Editorial colored header band. */}
-      <header className={cn("relative overflow-hidden", accent.block)}>
+      {/* Editorial colored header band, outlined in ink. */}
+      <header className={cn("relative overflow-hidden border-b-2 border-ink", accent.block)}>
         <AccentShape
           shape={accent.shape}
           className={cn(
@@ -74,7 +74,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <Link
             href="/#work"
             className={cn(
-              "focus-on-dark inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity hover:opacity-80",
+              "inline-flex items-center gap-1.5 text-sm font-bold transition-opacity hover:opacity-80",
               accent.onBlock,
             )}
           >
@@ -82,17 +82,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             Back to selected work
           </Link>
 
-          <span
-            className={cn(
-              "mt-8 block font-serif text-6xl font-semibold leading-none opacity-70",
-              accent.onBlock,
-            )}
-          >
+          <span className={cn("font-display mt-8 block text-6xl opacity-80", accent.onBlock)}>
             {number}
           </span>
           <div
             className={cn(
-              "mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold uppercase tracking-[0.12em]",
+              "mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.12em]",
               accent.onBlock,
             )}
           >
@@ -102,12 +97,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </span>
             <span className="opacity-80">{project.status}</span>
           </div>
-          <h1
-            className={cn(
-              "mt-3 font-serif text-4xl font-semibold tracking-tight text-balance sm:text-5xl",
-              accent.onBlock,
-            )}
-          >
+          <h1 className={cn("font-display mt-3 text-4xl text-balance sm:text-5xl", accent.onBlock)}>
             {project.title}
           </h1>
         </div>
@@ -121,24 +111,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="mt-12 space-y-10">
           {sections.map((section) => (
             <section key={section.heading}>
-              <h2 className="font-serif text-2xl font-semibold tracking-tight text-navy">
-                {section.heading}
-              </h2>
-              <p className="mt-3 text-lg leading-relaxed text-muted text-pretty">
+              <h2 className="font-display text-2xl text-ink">{section.heading}</h2>
+              <p className="mt-3 text-lg leading-relaxed text-ink/70 text-pretty">
                 {section.body}
               </p>
             </section>
           ))}
 
           <section>
-            <h2 className="font-serif text-2xl font-semibold tracking-tight text-navy">
-              Product themes
-            </h2>
+            <h2 className="font-display text-2xl text-ink">Product themes</h2>
             <ul className="mt-4 flex flex-wrap gap-2">
               {project.themes.map((theme) => (
                 <li
                   key={theme}
-                  className="rounded-full border-2 border-navy/15 bg-ivory px-3.5 py-1.5 text-sm text-navy"
+                  className="rounded-full border-[1.5px] border-ink bg-cream px-3.5 py-1.5 text-sm text-ink"
                 >
                   {theme}
                 </li>
@@ -147,17 +133,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
         </div>
 
-        <aside className="mt-12 rounded-3xl border-2 border-ink bg-columbia-soft p-6 shadow-[6px_6px_0_0_var(--color-ink)]">
+        <aside className="mt-12 rounded-3xl border-2 border-ink bg-peach p-6 shadow-pop">
           <p className="text-base leading-relaxed text-ink">
-            <span className="font-semibold text-navy">
-              A fuller case study is in development.
-            </span>{" "}
+            <span className="font-bold">A fuller case study is in development.</span>{" "}
             This is a preliminary overview. If you’d like to talk through the
             work in more detail, I’m happy to.
           </p>
           <Link
             href="/#contact"
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-ivory transition-colors hover:bg-navy-700"
+            className="hover-pop mt-4 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-yellow px-5 py-2.5 text-sm font-bold text-ink shadow-pop-sm"
           >
             Get in touch
             <ArrowRightIcon width={16} height={16} />

@@ -19,10 +19,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article
       aria-labelledby={titleId}
-      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border-2 border-ink bg-ivory shadow-[6px_6px_0_0_var(--color-ink)] transition-transform duration-300 hover:-translate-y-1.5 focus-within:-translate-y-1.5"
+      className="hover-pop group relative flex h-full flex-col overflow-hidden rounded-3xl border-2 border-ink bg-cream shadow-pop"
     >
       {/* Editorial "cover": colored block with an oversized number + shape. */}
-      <div className={cn("relative h-36 overflow-hidden", accent.block)}>
+      <div className={cn("relative h-36 overflow-hidden border-b-2 border-ink", accent.block)}>
         <AccentShape
           shape={accent.shape}
           className={cn(
@@ -32,7 +32,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         />
         <span
           className={cn(
-            "absolute bottom-2 left-5 font-serif text-7xl font-semibold leading-none",
+            "font-display absolute bottom-1 left-5 text-7xl leading-none",
             accent.onBlock,
           )}
         >
@@ -41,17 +41,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold uppercase tracking-[0.12em]">
-          <span className="text-navy">{project.category}</span>
-          <span aria-hidden className="text-ink/25">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.12em]">
+          <span className="text-ink">{project.category}</span>
+          <span aria-hidden className="text-ink/30">
             /
           </span>
-          <span className="text-muted">{project.status}</span>
+          <span className="text-ink/60">{project.status}</span>
         </div>
 
         <h3
           id={titleId}
-          className="mt-3 font-serif text-2xl font-semibold tracking-tight text-navy"
+          className="font-display mt-3 text-2xl text-ink"
         >
           <Link
             href={href}
@@ -70,12 +70,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           )}
         />
 
-        <p className="mt-4 flex-1 text-base leading-relaxed text-muted text-pretty">
+        <p className="mt-4 flex-1 text-base leading-relaxed text-ink/70 text-pretty">
           {project.summary}
         </p>
 
         {project.outcome ? (
-          <p className="mt-4 text-sm font-medium text-navy">{project.outcome}</p>
+          <p className="mt-4 text-sm font-semibold text-ink">{project.outcome}</p>
         ) : null}
 
         {/* Supplementary themes, revealed on hover/focus. */}
@@ -83,14 +83,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {project.themes.slice(0, 3).map((theme) => (
             <li
               key={theme}
-              className="rounded-full border border-ink/15 px-2.5 py-0.5 text-xs text-muted"
+              className="rounded-full border-[1.5px] border-ink/20 px-2.5 py-0.5 text-xs text-ink/70"
             >
               {theme}
             </li>
           ))}
         </ul>
 
-        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-navy">
+        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-ink">
           View project
           <ArrowRightIcon
             className="transition-transform group-hover:translate-x-1"

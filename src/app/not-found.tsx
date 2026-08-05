@@ -10,33 +10,31 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="relative overflow-hidden bg-peach-soft">
+    <section className="relative overflow-hidden bg-cream">
       <Sunburst
         aria-hidden
-        className="animate-pop-spin pointer-events-none absolute -right-24 -top-24 h-96 w-96 text-yellow/60"
+        className="animate-pop-spin pointer-events-none absolute -right-24 -top-24 h-96 w-96 text-yellow"
       />
       <div className="relative mx-auto flex max-w-3xl flex-col items-start px-6 py-24 sm:py-32 lg:px-8">
-        <p className="font-serif text-8xl font-semibold leading-none text-magenta">
-          404
-        </p>
-        <h1 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-navy sm:text-5xl">
-          This page wandered off.
+        <p className="font-display text-8xl text-magenta">404</p>
+        <h1 className="font-display mt-4 text-4xl text-ink sm:text-5xl">
+          This page wandered <em className="italic text-purple">off</em>.
         </h1>
-        <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted text-pretty">
+        <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink/70 text-pretty">
           The page you’re looking for doesn’t exist or may have moved. Let’s get
           you back to something useful.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-yellow px-7 py-3.5 text-base font-semibold text-ink shadow-[4px_4px_0_0_var(--color-navy)] transition-colors hover:bg-tangerine"
+            className="hover-pop inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink bg-yellow px-7 py-3.5 text-base font-bold text-ink shadow-pop"
           >
             Back to home
             <ArrowRightIcon width={18} height={18} />
           </Link>
           <Link
             href="/#work"
-            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-navy px-7 py-3.5 text-base font-semibold text-navy transition-colors hover:bg-navy hover:text-ivory"
+            className="hover-pop inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink bg-cream px-7 py-3.5 text-base font-bold text-ink shadow-pop"
           >
             View selected work
           </Link>
