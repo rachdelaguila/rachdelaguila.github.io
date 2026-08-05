@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/*
+ * Editorial palette and design tokens.
+ * Colors are exposed to Tailwind via @theme so utilities like `bg-navy`,
+ * `text-ivory`, and `border-navy/10` are available across the site.
+ */
+@theme {
+  --color-navy: #173a5e;
+  --color-navy-700: #1f4a76;
+  --color-columbia: #b9d9eb;
+  --color-columbia-soft: #d7e9f4;
+  --color-ivory: #f7f4ee;
+  --color-ivory-deep: #efe9df;
+  --color-coral: #c97b6d;
+  --color-coral-soft: #e2a99f;
+  --color-ink: #1b2733;
+  --color-muted: #4a5a6a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+:root {
+  --background: var(--color-ivory);
+  --foreground: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keep anchored sections clear of the sticky header. */
+  scroll-padding-top: 5.5rem;
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Respect users who prefer reduced motion: disable smooth scroll + transitions. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible, consistent keyboard focus across interactive elements. */
+:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Utility: fluid editorial display sizing for large headings. */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
