@@ -14,10 +14,11 @@ export function Hero() {
       aria-labelledby="hero-heading"
       className="relative overflow-hidden bg-cream"
     >
-      {/* Mobile-only cropped corner shapes (kept clear of the headline). */}
+      {/* Mobile-only cropped corner shapes, pinned to the corner above the
+          headline so they never sit behind text. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-0 lg:hidden">
-        <Dot className="absolute -right-16 -top-16 h-52 w-52 text-purple/90" />
-        <Sunburst className="animate-pop-spin absolute -right-10 -top-10 h-40 w-40 text-yellow/70" />
+        <Dot className="absolute -right-14 -top-14 h-36 w-36 text-purple" />
+        <Sunburst className="animate-pop-spin absolute -right-6 -top-6 h-24 w-24 text-yellow" />
       </div>
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 pb-20 pt-24 sm:pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:px-8 lg:py-28">

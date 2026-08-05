@@ -78,8 +78,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <p className="mt-4 text-sm font-semibold text-ink">{project.outcome}</p>
         ) : null}
 
-        {/* Supplementary themes, revealed on hover/focus. */}
-        <ul className="mt-4 flex max-h-0 flex-wrap gap-1.5 overflow-hidden opacity-0 transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100 group-focus-within:max-h-24 group-focus-within:opacity-100">
+        {/* Supplementary theme tags. */}
+        <ul className="mt-4 flex flex-wrap gap-1.5">
           {project.themes.slice(0, 3).map((theme) => (
             <li
               key={theme}
