@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { site } from "@/content/site";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { Sunburst, WaveDivider } from "@/components/decor";
@@ -18,21 +17,24 @@ export function WritingCallout() {
       <div className="mx-auto max-w-5xl px-6 pb-24 pt-6 lg:px-8">
         {/* Bright panel sits on cream, outlined in ink. */}
         <div className="relative overflow-hidden rounded-[2rem] border-2 border-ink bg-purple shadow-pop">
-          {/* Decorative layer: shapes bleed off the edges, capped ~10% opacity,
-              and never sit under the centered text column. */}
+          {/* Decorative sunbursts sit only in the corners, bleeding off. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           >
-            <Sunburst className="animate-pop-spin absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 text-yellow/10" />
-            <Sunburst className="animate-pop-spin absolute -right-40 top-1/2 h-96 w-96 -translate-y-1/2 text-cream/10" />
+            <Sunburst className="animate-pop-spin absolute -left-24 -top-24 h-64 w-64 text-cream/12" />
+            <Sunburst className="animate-pop-spin absolute -right-24 -bottom-24 h-64 w-64 text-yellow/12" />
           </div>
 
-          {/* Purple scrim so the text block lands on a flat field. */}
+          {/* Near-solid purple scrim keeps the whole text block on a flat field;
+              only the far corners let the sunbursts peek through. */}
           <div
             aria-hidden
-            className="text-scrim absolute inset-x-0 top-1/2 h-[85%] -translate-y-1/2"
-            style={{ "--scrim-color": "rgb(107 47 217 / 0.92)" } as CSSProperties}
+            className="pointer-events-none absolute inset-0 z-[1]"
+            style={{
+              background:
+                "radial-gradient(130% 120% at 50% 45%, rgb(107 47 217) 72%, rgb(107 47 217 / 0) 100%)",
+            }}
           />
 
           <div className="relative z-10 px-6 py-20 text-center sm:px-12 sm:py-24">

@@ -20,7 +20,7 @@ export function Blob({ className, style }: ShapeProps) {
       viewBox="0 0 200 200"
       aria-hidden
       focusable="false"
-      className={cn("h-full w-full", className)}
+      className={cn(className)}
       style={style}
     >
       <path
@@ -39,7 +39,7 @@ export function Arch({ className, style }: ShapeProps) {
       viewBox="0 0 120 160"
       aria-hidden
       focusable="false"
-      className={cn("h-full w-full", className)}
+      className={cn(className)}
       style={style}
     >
       <path
@@ -68,7 +68,7 @@ export function Sunburst({ className, style }: ShapeProps) {
       viewBox="0 0 200 200"
       aria-hidden
       focusable="false"
-      className={cn("h-full w-full", className)}
+      className={cn(className)}
       style={style}
     >
       {paths.map((d, i) => (
@@ -85,7 +85,7 @@ export function Dot({ className, style }: ShapeProps) {
       viewBox="0 0 100 100"
       aria-hidden
       focusable="false"
-      className={cn("h-full w-full", className)}
+      className={cn(className)}
       style={style}
     >
       <circle cx="50" cy="50" r="50" fill="currentColor" />
@@ -100,7 +100,7 @@ export function Rings({ className, style }: ShapeProps) {
       viewBox="0 0 100 100"
       aria-hidden
       focusable="false"
-      className={cn("h-full w-full", className)}
+      className={cn(className)}
       style={style}
     >
       {[48, 34, 20, 8].map((r, i) => (
@@ -125,7 +125,7 @@ export function ArcStack({ className, style }: ShapeProps) {
       viewBox="0 0 120 120"
       aria-hidden
       focusable="false"
-      className={cn("h-full w-full", className)}
+      className={cn(className)}
       style={style}
     >
       {[120, 88, 56, 24].map((size, i) => (
