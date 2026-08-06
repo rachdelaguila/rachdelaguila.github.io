@@ -82,7 +82,7 @@ export function Hero() {
           {/* Magenta circle overlapping the purple. */}
           <Dot className="absolute right-24 top-24 h-40 w-40 text-magenta" />
           {/* Concentric tangerine ring target. */}
-          <Rings className="animate-pop-float absolute left-14 bottom-6 h-44 w-44 text-tangerine" />
+          <Rings className="animate-pop-float absolute left-24 bottom-4 h-44 w-44 text-tangerine" />
           {/* Exactly one checkerboard patch. */}
           <div className="animate-pop-float-slow absolute left-28 top-4 h-20 w-20 rotate-6 border-2 border-ink motif-checker text-ink/80" />
         </div>
