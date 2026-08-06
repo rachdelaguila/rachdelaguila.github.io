@@ -25,7 +25,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
         <Link href="/#top" className="font-serif text-lg font-semibold tracking-tight text-ink">
-          Rachelle <span className="italic text-magenta">Del Aguila</span>
+          Rachelle <span className="italic text-magenta-700">Del Aguila</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
