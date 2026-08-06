@@ -15,6 +15,12 @@ export type Project = {
   title: string;
   category: string;
   status: string;
+  /**
+   * Featured projects render as the large primary Selected Work cards.
+   * Non-featured projects appear in the smaller “Additional work” row.
+   * All projects keep their individual /work/[slug] routes.
+   */
+  featured: boolean;
   /** One–two sentence summary shown on the card and page intro. */
   summary: string;
   /** Optional, only when supportable and non-confidential. */
@@ -32,6 +38,7 @@ export const projects: Project[] = [
     title: "AlmaOS",
     category: "Personal product · Wellness AI",
     status: "Ongoing exploration",
+    featured: true,
     summary:
       "A privacy-first AI wellness operating system exploring how health, calendar, and personal context can support more recovery-aware daily planning.",
     overview:
@@ -52,6 +59,7 @@ export const projects: Project[] = [
     title: "Enterprise AI Adoption",
     category: "Practice · AI product strategy",
     status: "Active practice",
+    featured: true,
     summary:
       "A body of work focused on workflow discovery, AI product strategy, governance, organizational adoption, reliability, and ROI in enterprise environments.",
     overview:
@@ -72,6 +80,7 @@ export const projects: Project[] = [
     title: "Trading Technology",
     category: "Prior work · Financial systems",
     status: "Prior work",
+    featured: false,
     summary:
       "Product and platform work across complex financial and post-trade operations, enterprise systems, workflow automation, data quality, and operational risk.",
     overview:
@@ -92,6 +101,7 @@ export const projects: Project[] = [
     title: "SymSense AI",
     category: "Product discovery · Healthcare",
     status: "Discovery & validation",
+    featured: false,
     summary:
       "AI-enabled autoimmune-care product discovery and validation — understanding patient needs, testing product concepts, and evaluating viable business models.",
     overview:
@@ -111,4 +121,12 @@ export const projects: Project[] = [
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
+}
+
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((project) => project.featured);
+}
+
+export function getAdditionalProjects(): Project[] {
+  return projects.filter((project) => !project.featured);
 }

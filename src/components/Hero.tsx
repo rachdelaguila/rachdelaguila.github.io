@@ -89,27 +89,25 @@ export function Hero() {
           {primaryCta}
         </div>
 
-        {/* Positioning + supporting copy + secondary CTA. */}
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-14">
-          <div>
-            <p className="font-display max-w-2xl text-3xl leading-tight text-ink text-pretty sm:text-4xl">
-              {hero.positioning}
-            </p>
-            <Link
-              href={hero.secondaryCta.href}
-              className="font-chunk mt-7 inline-flex items-center gap-2 border border-ink px-6 py-3 text-base text-ink transition-colors hover:bg-ink hover:text-cream"
+        {/* Tight positioning deck — longer framing lives in About. */}
+        <div className="mt-12 max-w-3xl">
+          <p className="font-display text-3xl leading-tight text-ink text-pretty sm:text-4xl">
+            {hero.positioning}
+          </p>
+          {hero.supporting.map((paragraph) => (
+            <p
+              key={paragraph}
+              className="measure mt-5 leading-relaxed text-ink text-pretty"
             >
-              {hero.secondaryCta.label}
-            </Link>
-          </div>
-
-          <div className="border-t border-ink pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-1">
-            <div className="measure space-y-4 leading-relaxed text-ink text-pretty">
-              {hero.supporting.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
+              {paragraph}
+            </p>
+          ))}
+          <Link
+            href={hero.secondaryCta.href}
+            className="font-chunk mt-7 inline-flex items-center gap-2 border border-ink px-6 py-3 text-base text-ink transition-colors hover:bg-ink hover:text-cream"
+          >
+            {hero.secondaryCta.label}
+          </Link>
         </div>
       </div>
     </section>
