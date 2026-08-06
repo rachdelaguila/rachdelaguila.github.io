@@ -36,9 +36,11 @@ export function Hero() {
           <p className="mt-7 max-w-xl font-serif text-2xl font-semibold leading-snug text-ink text-pretty sm:text-[1.7rem]">
             {hero.positioning}
           </p>
-          <p className="measure mt-5 text-lg leading-relaxed text-ink text-pretty">
-            {hero.supporting}
-          </p>
+          <div className="measure mt-5 space-y-4 text-lg leading-relaxed text-ink text-pretty">
+            {hero.supporting.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
 
           <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:items-center">
             <Link
@@ -73,14 +75,14 @@ export function Hero() {
           aria-hidden
           className="pointer-events-none relative z-0 hidden h-[28rem] overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_32%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_32%)] lg:block"
         >
-          {/* Large violet circle bleeding off the top-right edge. */}
+          {/* Violet is the section's single full-strength accent. */}
           <Dot className="absolute -right-24 -top-20 h-[24rem] w-[24rem] text-violet" />
-          {/* Overlapping magenta circle. */}
-          <Dot className="absolute right-24 top-24 h-40 w-40 text-magenta" />
+          {/* Magenta demoted to a micro-accent dot. */}
+          <Dot className="absolute right-40 top-28 h-8 w-8 text-magenta" />
           {/* Small tangerine target (micro-accent). */}
-          <Rings className="absolute left-24 bottom-6 h-28 w-28 text-tangerine" />
-          {/* One checkerboard corner stamp. */}
-          <div className="absolute left-28 top-4 h-16 w-16 rotate-6 border border-ink motif-checker text-ink/80" />
+          <Rings className="absolute left-24 bottom-6 h-24 w-24 text-tangerine" />
+          {/* One checkerboard corner stamp (micro). */}
+          <div className="absolute left-28 top-4 h-14 w-14 rotate-6 border border-ink motif-checker text-ink/80" />
         </div>
       </div>
 

@@ -175,11 +175,6 @@ body {
 }
 
 /* ---- Motion (opt-in) ---------------------------------------------------- */
-@keyframes pop-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 @keyframes marquee-scroll {
   from {
     transform: translateX(0);
@@ -197,10 +192,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-.animate-pop-spin {
-  animation: pop-spin 60s linear infinite;
-  transform-origin: center;
 }
 .marquee-track {
   display: flex;

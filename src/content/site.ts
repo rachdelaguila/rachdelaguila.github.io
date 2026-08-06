@@ -57,8 +57,11 @@ export const site = {
     tagline: "Products, systems & ideas built for real people",
     positioning:
       "I build and strategize AI products at the intersection of enterprise systems, trustworthy AI, and operational transformation.",
-    supporting:
-      "My work lives in the complicated middle — the ambiguous, high-stakes workflows where a good product has to earn trust before it can earn adoption. I translate messy operational reality into products and operating systems, and I connect the details of technical implementation to outcomes leaders actually care about.",
+    /** Kept to ~4 lines each at 65ch for skimmability. */
+    supporting: [
+      "My work lives in the complicated middle — the ambiguous, high-stakes workflows where a good product has to earn trust before it can earn adoption.",
+      "I translate messy operational reality into products and operating systems, and I connect the details of technical implementation to outcomes leaders actually care about.",
+    ],
     primaryCta: { label: "View selected work", href: "/#work" },
     secondaryCta: { label: "Read my writing", href: "/#writing" },
     /** Short signals shown beneath the hero copy. Keep these truthful. */
@@ -73,7 +76,8 @@ export const site = {
     heading: "About",
     lead: "I’m a builder and strategist who is happiest where technology meets hard, human problems.",
     paragraphs: [
-      "I work as an AI product strategist and technical product builder, spanning product strategy, enterprise technology, and the operational realities of financial and trading systems. That combination shapes how I work: I care as much about how a system is adopted and governed as I do about whether it ships.",
+      "I work as an AI product strategist and technical product builder, spanning product strategy, enterprise technology, and the operational realities of financial and trading systems.",
+      "That combination shapes how I work: I care as much about how a system is adopted and governed as I do about whether it ships.",
       "I hold an MBA from Columbia Business School, which sharpened an operator’s instinct I’d already been building in enterprise environments — reading a business, finding where the workflow actually breaks, and turning that understanding into products people can rely on.",
       "Across trading technology, enterprise AI adoption, and early-stage product discovery, I’ve learned that trust is the real unlock. The most interesting problems aren’t only technical; they’re about whether people believe a system enough to change how they work.",
     ],

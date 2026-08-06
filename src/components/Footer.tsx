@@ -44,7 +44,7 @@ export function Footer() {
                       aria-label={link.description}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="focus-on-dark inline-flex h-10 w-10 items-center justify-center rounded-full border border-paper/40 text-paper transition-colors hover:border-yellow hover:text-yellow"
+                      className="focus-on-dark inline-flex h-11 w-11 items-center justify-center rounded-full border border-paper/40 text-paper transition-colors hover:border-yellow hover:text-yellow"
                     >
                       <Icon width={18} height={18} />
                     </a>

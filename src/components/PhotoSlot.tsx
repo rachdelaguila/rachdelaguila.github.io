@@ -13,6 +13,9 @@ type PhotoSlotProps = {
   className?: string;
   /** aspect-ratio utility, e.g. "aspect-[3/4]". */
   aspect?: string;
+  /** Explicit intrinsic dimensions for the future image (avoids CLS). */
+  width?: number;
+  height?: number;
 };
 
 export function PhotoSlot({
@@ -21,6 +24,8 @@ export function PhotoSlot({
   src,
   className,
   aspect = "aspect-[3/4]",
+  width = 800,
+  height = 1000,
 }: PhotoSlotProps) {
   return (
     <div
@@ -33,8 +38,16 @@ export function PhotoSlot({
       {src ? (
         // Static export uses unoptimized images; a plain <img> is intentional
         // here so a future photo drops into the duotone treatment directly.
+        // Explicit width/height + lazy loading keep CLS and the speed floor in check.
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt ?? ""} />
+        <img
+          src={src}
+          alt={alt ?? ""}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <span className="font-condensed pointer-events-none px-4 text-center text-[11px] text-ink/70">
           {label}
