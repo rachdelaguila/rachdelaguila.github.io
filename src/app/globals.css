@@ -86,6 +86,24 @@ body {
   line-height: 1;
 }
 
+/* ---- Hero crossover ----------------------------------------------------- */
+/* Name size shared by the h1 and the photo overlap so the blush line always
+   sits ~90% over the photo (its top edge tucked behind the line). */
+.hero-name {
+  font-size: var(--hero-name);
+  line-height: 0.92;
+}
+/* Mobile fallback: photo sits below the (all-ink) name, no crossover. */
+.hero-overlap {
+  margin-top: 1.75rem;
+}
+@media (min-width: 1024px) {
+  .hero-overlap {
+    /* Pull the photo up so its top edge is behind ~90% of the blush line. */
+    margin-top: calc(var(--hero-name) * -0.86);
+  }
+}
+
 /* ---- Collage furniture -------------------------------------------------- */
 /* Tilted polaroid with a soft paper shadow. */
 .polaroid {
