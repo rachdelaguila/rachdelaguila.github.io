@@ -39,7 +39,7 @@ export function Hero() {
         {/* Masthead: ink "Rachelle" on cream; blush "Del Aguila" over the photo. */}
         <h1 className="hero-name font-display relative z-20">
           <span className="block text-ink">Rachelle</span>
-          <span className="block text-ink lg:text-blush lg:[-webkit-text-stroke:1px_#201d1a]">
+          <span className="block text-ink lg:text-blush">
             Del Aguila
           </span>
         </h1>
