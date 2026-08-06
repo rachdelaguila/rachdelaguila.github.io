@@ -26,7 +26,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <div className="flex items-start justify-between gap-4">
         <PhotoSlot photo={photo} variant="polaroid" rotate={rotate} className="w-36 sm:w-40" />
-        <span className="font-chunk text-3xl text-ink/25">{number}</span>
+        <span className="font-chunk text-3xl text-ink/60">{number}</span>
       </div>
 
       <div className="mt-5 flex flex-1 flex-col">
@@ -34,7 +34,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <span className="mono hl bg-blush text-[10px] text-ink">
             {project.category}
           </span>
-          <span className="mono text-[10px] text-ink/60">{project.status}</span>
+          <span className="mono text-[10px] text-ink/70">{project.status}</span>
         </div>
 
         <h3 id={titleId} className="font-chunk mt-3 text-2xl text-ink">

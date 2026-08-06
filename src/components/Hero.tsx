@@ -24,7 +24,7 @@ export function Hero() {
                 className="h-full w-full grayscale object-cover"
               />
             ) : (
-              <span className="mono text-[11px] text-cream/80">
+              <span className="mono text-[11px] text-cream">
                 Photo · {photo.subject}
               </span>
             )}

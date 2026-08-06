@@ -73,11 +73,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </Link>
 
             <div className="mt-8 flex items-center gap-3">
-              <span className="font-chunk text-3xl text-ink/25">{number}</span>
+              <span className="font-chunk text-3xl text-ink/60">{number}</span>
               <span className="mono hl bg-blush text-[11px] text-ink">
                 {project.category}
               </span>
-              <span className="mono text-[11px] text-ink/60">{project.status}</span>
+              <span className="mono text-[11px] text-ink/70">{project.status}</span>
             </div>
             <h1 className="font-display mt-4 text-4xl text-ink text-balance sm:text-5xl">
               {project.title}
