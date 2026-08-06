@@ -13,14 +13,14 @@ export default function NotFound() {
     <section className="relative overflow-hidden bg-cream">
       <Sunburst
         aria-hidden
-        className="animate-pop-spin pointer-events-none absolute -right-24 -top-24 h-96 w-96 text-yellow"
+        className="animate-pop-spin pointer-events-none absolute -right-24 -top-24 z-0 h-96 w-96 text-yellow"
       />
-      <div className="relative mx-auto flex max-w-3xl flex-col items-start px-6 py-24 sm:py-32 lg:px-8">
+      <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-start px-6 py-24 sm:py-32 lg:px-8">
         <p className="font-display text-8xl text-magenta">404</p>
         <h1 className="font-display mt-4 text-4xl text-ink sm:text-5xl">
           This page wandered <em className="italic text-purple">off</em>.
         </h1>
-        <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink/70 text-pretty">
+        <p className="measure mt-4 text-lg leading-relaxed text-ink text-pretty">
           The page you’re looking for doesn’t exist or may have moved. Let’s get
           you back to something useful.
         </p>

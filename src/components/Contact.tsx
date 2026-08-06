@@ -15,12 +15,14 @@ export function Contact() {
       {/* Wavy transition from cream into peach. */}
       <WaveDivider className="-mt-px text-peach" flip />
 
+      {/* Decorative rings kept in the empty bottom-left corner, bleeding off
+          and clear of the email/buttons (which are in the right column). */}
       <Rings
         aria-hidden
-        className="animate-pop-float pointer-events-none absolute right-8 bottom-12 hidden h-28 w-28 text-purple lg:block"
+        className="animate-pop-float pointer-events-none absolute -left-10 -bottom-10 z-0 hidden h-32 w-32 text-purple lg:block"
       />
 
-      <div className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <SectionHeading
             id="contact-heading"
@@ -36,7 +38,7 @@ export function Contact() {
           <div className="lg:pt-2">
             <a
               href={`mailto:${links.email}`}
-              className="font-display group inline-flex items-center gap-2 text-2xl text-magenta transition-colors hover:text-purple sm:text-3xl"
+              className="font-display group inline-flex items-center gap-2 text-2xl text-magenta underline decoration-magenta decoration-wavy decoration-2 underline-offset-[6px] transition-colors hover:text-purple hover:decoration-purple sm:text-3xl"
             >
               {links.email}
               <ArrowUpRightIcon width={22} height={22} />

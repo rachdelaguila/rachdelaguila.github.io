@@ -38,7 +38,7 @@ export function SectionHeading({
         {title}
       </Heading>
       {description ? (
-        <p className="mt-4 text-lg leading-relaxed text-ink/70 text-pretty">
+        <p className="measure mt-4 text-lg leading-relaxed text-ink text-pretty">
           {description}
         </p>
       ) : null}

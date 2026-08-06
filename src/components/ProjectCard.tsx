@@ -43,10 +43,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="flex flex-1 flex-col p-6 sm:p-7">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.12em]">
           <span className="text-ink">{project.category}</span>
-          <span aria-hidden className="text-ink/30">
+          <span aria-hidden className="text-ink/40">
             /
           </span>
-          <span className="text-ink/60">{project.status}</span>
+          <span className="text-ink">{project.status}</span>
         </div>
 
         <h3
@@ -70,7 +70,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           )}
         />
 
-        <p className="mt-4 flex-1 text-base leading-relaxed text-ink/70 text-pretty">
+        <p className="mt-4 flex-1 text-[17px] leading-relaxed text-ink text-pretty">
           {project.summary}
         </p>
 
@@ -83,7 +83,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {project.themes.slice(0, 3).map((theme) => (
             <li
               key={theme}
-              className="rounded-full border-[1.5px] border-ink/20 px-2.5 py-0.5 text-xs text-ink/70"
+              className="rounded-full border-[1.5px] border-ink/30 px-2.5 py-0.5 text-xs text-ink"
             >
               {theme}
             </li>

@@ -42,9 +42,34 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  /* Readable base body type. */
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+}
+
+/* Comfortable measure for running text. */
+.measure {
+  max-width: 65ch;
+}
+
+/*
+ * Scrim placed between a decorative layer (z-0) and a text block (z-10) when a
+ * shape would otherwise sit behind the text. It paints a soft ellipse of the
+ * section's own background color (set --scrim-color) so text lands on a flat
+ * field. Decorative-only; non-interactive.
+ */
+.text-scrim {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    var(--scrim-color) 68%,
+    transparent 100%
+  );
 }
 
 /* ---- Display type: Fraunces, heavy, tight, optical size maxed ---------- */

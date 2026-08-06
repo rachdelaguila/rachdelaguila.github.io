@@ -61,7 +61,7 @@ export function Chip({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full border-[1.5px] border-ink bg-transparent px-3.5 py-1.5 text-sm font-medium text-ink transition-colors",
+        "inline-flex items-center gap-2 rounded-full border-[1.5px] border-ink bg-cream px-3.5 py-1.5 text-sm font-medium text-ink transition-colors",
         a.hover,
         className,
       )}

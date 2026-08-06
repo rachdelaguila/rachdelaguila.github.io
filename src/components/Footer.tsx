@@ -16,7 +16,7 @@ export function Footer() {
             >
               Rachelle <span className="italic text-yellow">Del Aguila</span>
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-cream/70">
+            <p className="mt-3 text-sm leading-relaxed text-cream">
               {site.role}.
             </p>
           </div>
@@ -27,7 +27,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="focus-on-dark squiggle rounded-sm text-sm font-semibold text-cream/80 transition-colors hover:text-yellow"
+                    className="focus-on-dark squiggle rounded-sm text-sm font-semibold text-cream transition-colors hover:text-yellow"
                   >
                     {item.label}
                   </Link>
@@ -57,7 +57,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-cream/20 pt-6 text-sm text-cream/60">
+        <div className="mt-10 border-t border-cream/20 pt-6 text-sm text-cream/90">
           <p>
             © {year} {site.name}. Built with Next.js and deployed on GitHub
             Pages.

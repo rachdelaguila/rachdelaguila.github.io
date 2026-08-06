@@ -66,11 +66,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <AccentShape
           shape={accent.shape}
           className={cn(
-            "pointer-events-none absolute -right-10 -top-10 h-56 w-56 opacity-90",
+            "pointer-events-none absolute -right-10 -top-10 z-0 h-56 w-56 opacity-90",
             accent.shapeColor,
           )}
         />
-        <div className="relative mx-auto max-w-3xl px-6 py-16 sm:py-20 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-3xl px-6 py-16 sm:py-20 lg:px-8">
           <Link
             href="/#work"
             className={cn(
@@ -104,7 +104,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </header>
 
       <div className="mx-auto max-w-3xl px-6 py-14 sm:py-16 lg:px-8">
-        <p className="text-xl leading-relaxed text-ink text-pretty">
+        <p className="measure text-xl leading-relaxed text-ink text-pretty">
           {project.summary}
         </p>
 
@@ -112,7 +112,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {sections.map((section) => (
             <section key={section.heading}>
               <h2 className="font-display text-2xl text-ink">{section.heading}</h2>
-              <p className="mt-3 text-lg leading-relaxed text-ink/70 text-pretty">
+              <p className="measure mt-3 text-lg leading-relaxed text-ink text-pretty">
                 {section.body}
               </p>
             </section>

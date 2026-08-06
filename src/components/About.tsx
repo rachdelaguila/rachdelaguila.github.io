@@ -16,12 +16,13 @@ export function About() {
       {/* Wavy transition from the cream work section into peach. */}
       <WaveDivider className="-mt-px text-peach" flip />
 
+      {/* Decorative arc kept at the empty bottom-left edge, clear of all text. */}
       <ArcStack
         aria-hidden
-        className="animate-pop-float pointer-events-none absolute -right-4 top-16 hidden h-40 w-40 text-magenta lg:block"
+        className="animate-pop-float pointer-events-none absolute -left-10 bottom-4 z-0 hidden h-36 w-36 text-magenta lg:block"
       />
 
-      <div className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div className="relative">
             <SectionHeading

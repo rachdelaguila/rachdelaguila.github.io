@@ -37,7 +37,7 @@ export function Hero() {
           <p className="mt-7 max-w-xl font-serif text-2xl font-semibold leading-snug text-ink text-pretty sm:text-[1.7rem]">
             {hero.positioning}
           </p>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink/70 text-pretty">
+          <p className="measure mt-5 text-lg leading-relaxed text-ink text-pretty">
             {hero.supporting}
           </p>
 
@@ -68,10 +68,11 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* Desktop hero shape cluster — one composition, cropping off-canvas. */}
+        {/* Desktop hero shape cluster — one composition, contained to this
+            column (overflow-hidden) so it never crosses into the text column. */}
         <div
           aria-hidden
-          className="pointer-events-none relative hidden h-[30rem] lg:block"
+          className="pointer-events-none relative z-0 hidden h-[30rem] overflow-hidden lg:block"
         >
           {/* Yellow sunburst rays peeking from behind. */}
           <Sunburst className="animate-pop-spin absolute right-0 top-6 h-72 w-72 text-yellow" />
