@@ -10,22 +10,23 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="reveal border-t border-ink bg-lilac"
+      className="border-t border-ink bg-paper"
     >
-      {/* A composed closing moment: centered, generous whitespace, one accent. */}
-      <div className="mx-auto flex max-w-2xl scroll-mt-28 flex-col items-center px-6 py-28 text-center sm:py-32 lg:px-8">
-        <Eyebrow>{contact.heading}</Eyebrow>
+      {/* Composed closing: centered, generous whitespace, LinkedIn dominant. */}
+      <div className="mx-auto flex max-w-3xl scroll-mt-28 flex-col items-center px-6 py-28 text-center sm:py-32 lg:px-8">
+        <div className="flex flex-col items-center">
+          <Eyebrow>{contact.heading}</Eyebrow>
+          <span aria-hidden className="mt-2 block h-0.5 w-12 bg-magenta" />
+        </div>
 
         <h2
           id="contact-heading"
-          className="font-display mt-6 text-4xl text-ink sm:text-5xl"
+          className="font-head mt-6 text-5xl text-ink sm:text-6xl"
         >
-          Get in <em className="italic text-magenta">touch</em>
+          Get in touch
         </h2>
-        {/* The one decorative accent for this section. */}
-        <span aria-hidden className="mt-4 block h-1 w-12 rounded-full bg-magenta" />
 
-        <p className="measure mt-6 text-lg leading-relaxed text-ink text-pretty">
+        <p className="measure mt-6 font-serif text-lg leading-relaxed text-ink text-pretty">
           {contact.description}
         </p>
 
@@ -41,10 +42,10 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "hover-pop inline-flex items-center justify-center gap-2 rounded-full border border-ink font-condensed shadow-pop",
+                    "invert-hover font-condensed inline-flex items-center justify-center gap-2 border border-ink",
                     isPrimary
-                      ? "bg-ink px-9 py-4 text-base text-paper"
-                      : "bg-paper px-6 py-3 text-sm text-ink",
+                      ? "bg-ink px-10 py-4 text-base text-paper hover:bg-paper hover:text-ink"
+                      : "bg-paper px-6 py-3 text-sm text-ink hover:bg-ink hover:text-paper",
                   )}
                 >
                   <Icon width={isPrimary ? 22 : 18} height={isPrimary ? 22 : 18} />

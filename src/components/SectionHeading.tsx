@@ -5,7 +5,6 @@ import { Eyebrow } from "@/components/ui";
 type SectionHeadingProps = {
   id?: string;
   eyebrow?: string;
-  /** ReactNode so callers can italicize/color one accent word. */
   title: ReactNode;
   description?: string;
   align?: "left" | "center";
@@ -25,20 +24,31 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto text-center",
+        "max-w-3xl",
+        align === "center" && "mx-auto",
         className,
       )}
     >
-      {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
+      {eyebrow ? (
+        <div className={cn(align === "center" && "flex flex-col items-center")}>
+          <Eyebrow>{eyebrow}</Eyebrow>
+          {/* 2px magenta rule — the accent. */}
+          <span aria-hidden className="mt-2 block h-0.5 w-12 bg-magenta" />
+        </div>
+      ) : null}
       <Heading
         id={id}
-        className="font-display text-4xl text-ink text-balance sm:text-5xl"
+        className="font-head mt-5 text-4xl text-ink text-balance sm:text-5xl"
       >
         {title}
       </Heading>
       {description ? (
-        <p className="measure mt-4 text-lg leading-relaxed text-ink text-pretty">
+        <p
+          className={cn(
+            "measure mt-5 text-lg leading-relaxed text-ink text-pretty",
+            align === "center" && "mx-auto",
+          )}
+        >
           {description}
         </p>
       ) : null}

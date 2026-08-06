@@ -19,13 +19,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b border-ink transition-colors",
+        "invert-hover sticky top-0 z-50 border-b border-ink",
         scrolled ? "bg-paper/95 backdrop-blur-sm" : "bg-paper",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
-        <Link href="/#top" className="font-serif text-lg font-semibold tracking-tight text-ink">
-          Rachelle <span className="italic text-magenta-700">Del Aguila</span>
+        <Link href="/#top" className="font-head text-lg text-ink">
+          Rachelle Del Aguila
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
@@ -34,7 +34,7 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="squiggle font-condensed text-sm text-ink"
+                  className="link-underline font-condensed text-[11px] text-ink"
                 >
                   {item.label}
                 </Link>
@@ -43,7 +43,7 @@ export function Header() {
             <li>
               <Link
                 href="/#contact"
-                className="hover-pop inline-flex items-center rounded-full bg-ink px-4 py-2 font-condensed text-xs text-paper shadow-pop-sm"
+                className="invert-hover inline-flex items-center border border-ink bg-ink px-4 py-2 font-condensed text-[11px] text-paper hover:bg-paper hover:text-ink"
               >
                 Get in touch
               </Link>

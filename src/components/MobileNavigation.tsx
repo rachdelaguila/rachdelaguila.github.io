@@ -51,7 +51,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={open ? "Close menu" : "Open menu"}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink transition-colors hover:bg-ink/5"
+        className="inline-flex h-11 w-11 items-center justify-center text-ink transition-colors hover:bg-ink/5"
       >
         {open ? <CloseIcon /> : <MenuIcon />}
       </button>
@@ -70,16 +70,16 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation"
-            className="absolute inset-x-0 top-0 border-b border-ink bg-paper px-6 pb-8 pt-4 shadow-pop"
+            className="absolute inset-x-0 top-0 border-b border-ink bg-paper px-6 pb-8 pt-4"
           >
             <div className="flex items-center justify-between">
-              <span className="font-condensed text-sm text-ink">Menu</span>
+              <span className="font-condensed text-[11px] text-ink">Menu</span>
               <button
                 ref={closeRef}
                 type="button"
                 onClick={close}
                 aria-label="Close menu"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink transition-colors hover:bg-ink/5"
+                className="inline-flex h-11 w-11 items-center justify-center text-ink transition-colors hover:bg-ink/5"
               >
                 <CloseIcon />
               </button>
@@ -91,7 +91,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
                     <Link
                       href={item.href}
                       onClick={close}
-                      className="block px-2 py-3 font-condensed text-3xl text-ink transition-colors hover:text-magenta"
+                      className="block px-2 py-3 font-head text-3xl text-ink"
                     >
                       {item.label}
                     </Link>

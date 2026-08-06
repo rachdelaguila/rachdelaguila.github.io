@@ -1,15 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Rachelle Del Aguila — AI product strategist and technical product builder">
-  <rect width="1200" height="630" fill="#f7f4ee" />
-  <!-- Retro-pop shape composition -->
-  <circle cx="1050" cy="130" r="150" fill="#f6cf3c" />
-  <circle cx="1090" cy="470" r="90" fill="#e83e8c" />
-  <path d="M120 470a90 90 0 0 1 180 0z" fill="#7047eb" />
-  <rect x="70" y="70" width="46" height="46" rx="10" fill="#f36f32" />
-  <!-- Name -->
-  <text x="90" y="250" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" fill="#173a5e">Rachelle</text>
-  <text x="90" y="345" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" fill="#e83e8c">Del Aguila</text>
-  <!-- Positioning -->
-  <text x="92" y="430" font-family="Arial, sans-serif" font-size="34" font-weight="600" fill="#201d2b">AI product strategist &amp; technical product builder</text>
-  <text x="92" y="500" font-family="Arial, sans-serif" font-size="27" fill="#4a4756">Enterprise systems · Trustworthy AI · Operational transformation</text>
-  <text x="92" y="565" font-family="Arial, sans-serif" font-size="24" fill="#4a4756">rachdelaguila.github.io</text>
+  <rect width="1200" height="630" fill="#fafaf7" />
+  <rect x="12" y="12" width="1176" height="606" fill="none" stroke="#131118" stroke-width="2" />
+  <!-- kicker + accent rule -->
+  <text x="80" y="130" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4" fill="#131118">AI PRODUCT STRATEGIST · TECHNICAL PRODUCT BUILDER</text>
+  <rect x="80" y="150" width="80" height="4" fill="#e80d6e" />
+  <!-- masthead -->
+  <text x="76" y="330" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#131118">RACHELLE</text>
+  <text x="76" y="470" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#131118">DEL AGUILA</text>
+  <!-- footer line -->
+  <text x="80" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#131118">Trustworthy AI · Enterprise systems · Operational transformation</text>
 </svg>

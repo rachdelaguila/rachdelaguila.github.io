@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Fraunces, Anton } from "next/font/google";
+import { Fraunces, Anton } from "next/font/google";
 import "./globals.css";
 import { site, siteUrl } from "@/content/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -85,12 +79,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${fraunces.variable} ${anton.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${anton.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <a
           href="#main"
-          className="focus-on-dark sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-paper"
+          className="focus-on-dark sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-paper"
         >
           Skip to content
         </a>

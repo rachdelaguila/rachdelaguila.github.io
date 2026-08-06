@@ -51,30 +51,33 @@ and truthful.
 
 ## Visual identity
 
-The design direction is **"Y2K editorial pop"** — editorial, chic, still fun.
-Gallery-white (`paper`) and pale `lilac` backgrounds, near-black `ink` for all
-text/borders/shadows, electric `magenta` + `violet` as the two full-strength
-accents, and a chrome gradient as the signature. Tangerine/yellow are
-micro-accents only (dots, tag borders, underlines) — never section backgrounds.
+The design direction is **"hard editorial"** — 032c one-accent discipline,
+NYLON grotesque scale. **Three colors only:** `paper` #FAFAF7 (ground), `ink`
+#131118 (all type, borders, rules), and a single accent `magenta` #E80D6E. Do
+not reintroduce lilac, violet, yellow/tangerine, chrome, gradients, drop
+shadows, or rounded corners.
 
-- Typography: Fraunces (display, tightened, italic only on the one accent word
-  per heading), Space Grotesk (body), and Anton via `.font-condensed` for
-  kickers/nav/labels/buttons/marquee (uppercase, 0.12em tracking). Work numerals
-  use `.numeral-outline`.
-- The chrome gradient (`.chrome-text` / `.chrome-fill`) is used **exactly
-  twice**: the hero "Del Aguila" wordmark and one sticker. There are exactly two
-  stickers total.
-- Design tokens live in `src/app/globals.css` (`@theme`). Reusable decorative
-  primitives (rings, checkerboard, etc.) live in `src/components/decor.tsx`;
-  per-project accents (a color bar + corner stamp) live in
-  `src/lib/project-accents.ts`; photo slots use `src/components/PhotoSlot.tsx`
-  (duotone-ready). Build identity from CSS/SVG, type, and layout — never generic
-  stock graphics, AI-brain/robot art, or copied illustrations.
-- **Contrast & layering discipline:** body text is ink on white/lilac only
-  (17px/1.65, 65ch); light text (`paper`) only on ink/violet solids. Decorative
-  shapes render below text (`z-0`, `pointer-events-none`) and never sit behind a
-  paragraph, chip, link, or button; interactive elements are never occluded.
-  Verify WCAG AA before shipping color changes.
+- **Type does the work.** Anton via `.font-head` (tight caps) for the masthead
+  and section headings and `.font-condensed` (0.15em caps) for kickers, nav,
+  labels, buttons, ticker; Fraunces (serif) is body text plus one pull quote per
+  page. No italic accent words in display; no pink text in headings.
+- **Accent discipline:** magenta appears as large-area color in **exactly one
+  place per page — the ticker**. Otherwise only as 2px rules, link underlines,
+  and hover inversions. Never as a fill on rounded shapes, never on italic text,
+  never at section-background scale. (Ticker text is sized as WCAG "large" so
+  white-on-magenta clears AA.)
+- **No decoration except editorial furniture:** oversized index numerals
+  (`.numeral-outline`), 1px ink hairlines between sections, footnote-style
+  asides, the folio line under the nav, and one footer barcode wink. No blobs,
+  targets, checkerboards, stickers, or squiggles. Corners are 0px everywhere;
+  buttons are squared 1px-ink blocks or underlined links; no shadows.
+- Photography (`src/components/PhotoSlot.tsx`) is black & white only (no tint),
+  1px ink border, square/3:4, with an 11px caps caption credit.
+- **Interaction:** hover is background/text inversion (white↔ink) or an accent
+  underline reveal, ≤200ms; nothing bounces, floats, or rotates (only the
+  marquee scrolls). Everything honors `prefers-reduced-motion`.
+- **Contrast discipline:** body text is ink on white only; verify WCAG AA before
+  shipping color changes (Lighthouse a11y target 95+).
 - Keep motion restrained and gated on `prefers-reduced-motion` (see the
   `.animate-pop-*` classes, which freeze under reduced motion).
 
