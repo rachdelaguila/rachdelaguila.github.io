@@ -69,10 +69,11 @@ export function Hero() {
         </div>
 
         {/* Desktop hero shape cluster — one composition, contained to this
-            column (overflow-hidden) so it never crosses into the text column. */}
+            column (overflow-hidden) and faded on the left edge so no shape
+            comes near the text column. */}
         <div
           aria-hidden
-          className="pointer-events-none relative z-0 hidden h-[30rem] overflow-hidden lg:block"
+          className="pointer-events-none relative z-0 hidden h-[30rem] overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_30%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_30%)] lg:block"
         >
           {/* Yellow sunburst rays peeking from behind. */}
           <Sunburst className="animate-pop-spin absolute right-0 top-6 h-72 w-72 text-yellow" />
@@ -81,7 +82,7 @@ export function Hero() {
           {/* Magenta circle overlapping the purple. */}
           <Dot className="absolute right-24 top-24 h-40 w-40 text-magenta" />
           {/* Concentric tangerine ring target. */}
-          <Rings className="animate-pop-float absolute left-2 bottom-6 h-44 w-44 text-tangerine" />
+          <Rings className="animate-pop-float absolute left-14 bottom-6 h-44 w-44 text-tangerine" />
           {/* Exactly one checkerboard patch. */}
           <div className="animate-pop-float-slow absolute left-28 top-4 h-20 w-20 rotate-6 border-2 border-ink motif-checker text-ink/80" />
         </div>
