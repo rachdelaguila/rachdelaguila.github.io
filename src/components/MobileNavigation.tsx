@@ -70,10 +70,10 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation"
-            className="absolute inset-x-0 top-0 border-b-2 border-ink bg-cream px-6 pb-8 pt-4 shadow-pop"
+            className="absolute inset-x-0 top-0 border-b border-ink bg-paper px-6 pb-8 pt-4 shadow-pop"
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-lg text-ink">Menu</span>
+              <span className="font-condensed text-sm text-ink">Menu</span>
               <button
                 ref={closeRef}
                 type="button"
@@ -91,7 +91,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
                     <Link
                       href={item.href}
                       onClick={close}
-                      className="block rounded-md px-2 py-3 font-display text-3xl text-ink transition-colors hover:text-magenta"
+                      className="block px-2 py-3 font-condensed text-3xl text-ink transition-colors hover:text-magenta"
                     >
                       {item.label}
                     </Link>

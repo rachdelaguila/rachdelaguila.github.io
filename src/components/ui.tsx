@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/* Shared retro-pop UI primitives. */
+/* Shared Y2K editorial UI primitives. */
 
-type Accent = "magenta" | "purple" | "tangerine" | "yellow";
+type Accent = "magenta" | "violet" | "tangerine" | "yellow";
 
-/** Uppercase eyebrow label in a small ink-bordered pill. */
+/** Uppercase condensed kicker/eyebrow in a small ink-bordered pill. */
 export function Eyebrow({
   children,
   className,
@@ -16,7 +16,7 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border-[1.5px] border-ink bg-cream px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.15em] text-ink",
+        "font-condensed inline-flex items-center rounded-full border border-ink bg-paper px-3 py-1 text-[11px] text-ink",
         className,
       )}
     >
@@ -28,11 +28,11 @@ export function Eyebrow({
 const CHIP_ACCENT: Record<Accent, { dot: string; hover: string }> = {
   magenta: {
     dot: "bg-magenta",
-    hover: "hover:border-magenta-700 hover:bg-magenta-700 hover:text-cream",
+    hover: "hover:border-magenta-700 hover:bg-magenta-700 hover:text-paper",
   },
-  purple: {
-    dot: "bg-purple",
-    hover: "hover:border-purple hover:bg-purple hover:text-cream",
+  violet: {
+    dot: "bg-violet",
+    hover: "hover:border-violet hover:bg-violet hover:text-paper",
   },
   tangerine: {
     dot: "bg-tangerine",
@@ -45,7 +45,7 @@ const CHIP_ACCENT: Record<Accent, { dot: string; hover: string }> = {
 };
 
 /**
- * Tag chip: ink border + colored dot; on hover it fills with the accent.
+ * Tag chip: ink border + micro-accent dot; on hover it fills with the accent.
  * Hover text colors are chosen per accent to stay AA-legible.
  */
 export function Chip({
@@ -61,7 +61,7 @@ export function Chip({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full border-[1.5px] border-ink bg-cream px-3.5 py-1.5 text-sm font-medium text-ink transition-colors",
+        "inline-flex items-center gap-2 rounded-full border border-ink bg-paper px-3.5 py-1.5 text-sm font-medium text-ink transition-colors",
         a.hover,
         className,
       )}
@@ -72,22 +72,25 @@ export function Chip({
   );
 }
 
-const STICKER_COLOR: Record<Accent, string> = {
-  magenta: "bg-magenta-700 text-cream",
-  purple: "bg-purple text-cream",
-  tangerine: "bg-tangerine text-ink",
-  yellow: "bg-yellow text-ink",
+type StickerColor = Accent | "chrome";
+
+const STICKER_COLOR: Record<StickerColor, string> = {
+  magenta: "bg-magenta-700 text-paper border-ink",
+  violet: "bg-violet text-paper border-ink",
+  tangerine: "bg-tangerine text-ink border-ink",
+  yellow: "bg-yellow text-ink border-ink",
+  chrome: "chrome-fill text-ink border-ink",
 };
 
-/** Rotated sticker badge with a thick ink border + hard offset shadow. */
+/** Rotated sticker badge with a thin ink border + hard offset shadow. */
 export function Sticker({
   children,
-  color = "yellow",
+  color = "chrome",
   className,
   decorative = false,
 }: {
   children: ReactNode;
-  color?: Accent;
+  color?: StickerColor;
   className?: string;
   decorative?: boolean;
 }) {
@@ -95,7 +98,7 @@ export function Sticker({
     <span
       {...(decorative ? { "aria-hidden": true } : {})}
       className={cn(
-        "inline-block rounded-2xl border-2 border-ink px-4 py-2 text-sm font-bold shadow-pop-sm",
+        "font-condensed inline-block rounded-[6px] border px-4 py-2 text-xs shadow-pop-sm",
         STICKER_COLOR[color],
         className,
       )}

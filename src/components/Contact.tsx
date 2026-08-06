@@ -1,28 +1,18 @@
-import { site, socialLinks } from "@/content/site";
+import { site, contactCtas } from "@/content/site";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ArrowUpRightIcon, iconForLabel } from "@/components/icons";
-import { Rings, WaveDivider } from "@/components/decor";
+import { iconForLabel } from "@/components/icons";
+import { cn } from "@/lib/utils";
 
 export function Contact() {
-  const { contact, links } = site;
+  const { contact } = site;
 
   return (
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="reveal relative overflow-hidden bg-peach"
+      className="reveal border-t border-ink bg-lilac"
     >
-      {/* Wavy transition from cream into peach. */}
-      <WaveDivider className="-mt-px text-peach" flip />
-
-      {/* Decorative rings kept in the empty bottom-left corner, bleeding off
-          and clear of the email/buttons (which are in the right column). */}
-      <Rings
-        aria-hidden
-        className="animate-pop-float pointer-events-none absolute -left-10 -bottom-10 z-0 hidden h-32 w-32 text-purple lg:block"
-      />
-
-      <div className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
+      <div className="mx-auto max-w-6xl scroll-mt-28 px-6 py-24 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <SectionHeading
             id="contact-heading"
@@ -36,30 +26,26 @@ export function Contact() {
           />
 
           <div className="lg:pt-2">
-            <a
-              href={`mailto:${links.email}`}
-              className="font-display group inline-flex items-center gap-2 text-2xl text-magenta underline decoration-magenta decoration-wavy decoration-2 underline-offset-[6px] transition-colors hover:text-purple hover:decoration-purple sm:text-3xl"
-            >
-              {links.email}
-              <ArrowUpRightIcon width={22} height={22} />
-            </a>
-
-            <ul className="mt-8 flex flex-wrap gap-3">
-              {socialLinks.map((link) => {
-                const Icon = iconForLabel(link.label);
-                const isMail = link.label.toLowerCase() === "email";
+            <ul className="flex flex-wrap gap-3.5">
+              {contactCtas.map((cta) => {
+                const Icon = iconForLabel(cta.label);
+                const isPrimary = cta.variant === "primary";
                 return (
-                  <li key={link.label}>
+                  <li key={cta.label}>
                     <a
-                      href={link.href}
-                      aria-label={link.description}
-                      {...(isMail
-                        ? {}
-                        : { target: "_blank", rel: "noopener noreferrer" })}
-                      className="hover-pop inline-flex items-center gap-2 rounded-full border-2 border-ink bg-cream px-4 py-2.5 text-sm font-bold text-ink shadow-pop-sm hover:bg-ink hover:text-cream"
+                      href={cta.href}
+                      aria-label={cta.description}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        "hover-pop inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 font-condensed text-sm shadow-pop",
+                        isPrimary
+                          ? "bg-ink text-paper"
+                          : "bg-paper text-ink",
+                      )}
                     >
                       <Icon width={18} height={18} />
-                      {link.label}
+                      {cta.label}
                     </a>
                   </li>
                 );

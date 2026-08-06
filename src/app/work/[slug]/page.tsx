@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 import { getProjectAccent } from "@/lib/project-accents";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "@/components/icons";
-import { AccentShape } from "@/components/decor";
+import { Rings } from "@/components/decor";
 
 export const dynamicParams = false;
 
@@ -61,43 +61,34 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article>
-      {/* Editorial colored header band, outlined in ink. */}
-      <header className={cn("relative overflow-hidden border-b-2 border-ink", accent.block)}>
-        <AccentShape
-          shape={accent.shape}
-          className={cn(
-            "pointer-events-none absolute -right-10 -top-10 z-0 h-56 w-56 opacity-90",
-            accent.shapeColor,
+      {/* Editorial header: thin accent bar + outline numeral + corner stamp. */}
+      <header className="relative border-b border-ink bg-paper">
+        <div className={cn("h-2 w-full", accent.bar)} />
+        <div aria-hidden className="pointer-events-none absolute right-6 top-8">
+          {accent.stamp === "rings" ? (
+            <Rings className={cn("h-12 w-12", accent.stampColor)} />
+          ) : (
+            <div className="h-10 w-10 border border-ink motif-checker text-ink/80" />
           )}
-        />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 py-16 sm:py-20 lg:px-8">
+        </div>
+        <div className="mx-auto max-w-3xl px-6 py-14 sm:py-16 lg:px-8">
           <Link
             href="/#work"
-            className={cn(
-              "inline-flex items-center gap-1.5 text-sm font-bold transition-opacity hover:opacity-80",
-              accent.onBlock,
-            )}
+            className="font-condensed inline-flex items-center gap-1.5 text-xs text-ink transition-opacity hover:opacity-70"
           >
             <ArrowRightIcon className="rotate-180" width={16} height={16} />
             Back to selected work
           </Link>
 
-          <span className={cn("font-display mt-8 block text-6xl opacity-80", accent.onBlock)}>
-            {number}
-          </span>
-          <div
-            className={cn(
-              "mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.12em]",
-              accent.onBlock,
-            )}
-          >
+          <span className="numeral-outline mt-8 block text-6xl">{number}</span>
+          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 font-condensed text-[11px] text-ink">
             <span>{project.category}</span>
-            <span aria-hidden className="opacity-40">
+            <span aria-hidden className="text-ink/40">
               /
             </span>
-            <span className="opacity-80">{project.status}</span>
+            <span className="text-ink/70">{project.status}</span>
           </div>
-          <h1 className={cn("font-display mt-3 text-4xl text-balance sm:text-5xl", accent.onBlock)}>
+          <h1 className="font-display mt-2 text-4xl text-ink text-balance sm:text-5xl">
             {project.title}
           </h1>
         </div>
@@ -124,7 +115,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.themes.map((theme) => (
                 <li
                   key={theme}
-                  className="rounded-full border-[1.5px] border-ink bg-cream px-3.5 py-1.5 text-sm text-ink"
+                  className="rounded-full border border-ink px-3.5 py-1.5 text-sm text-ink"
                 >
                   {theme}
                 </li>
@@ -133,15 +124,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
         </div>
 
-        <aside className="mt-12 rounded-3xl border-2 border-ink bg-peach p-6 shadow-pop">
+        <aside className="mt-12 rounded-[6px] border border-ink bg-lilac p-6 shadow-pop">
           <p className="text-base leading-relaxed text-ink">
-            <span className="font-bold">A fuller case study is in development.</span>{" "}
+            <span className="font-semibold">A fuller case study is in development.</span>{" "}
             This is a preliminary overview. If you’d like to talk through the
             work in more detail, I’m happy to.
           </p>
           <Link
             href="/#contact"
-            className="hover-pop mt-4 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-yellow px-5 py-2.5 text-sm font-bold text-ink shadow-pop-sm"
+            className="hover-pop mt-4 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 font-condensed text-xs text-paper shadow-pop-sm"
           >
             Get in touch
             <ArrowRightIcon width={16} height={16} />

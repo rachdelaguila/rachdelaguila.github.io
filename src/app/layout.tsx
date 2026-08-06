@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Fraunces } from "next/font/google";
+import { Space_Grotesk, Fraunces, Anton } from "next/font/google";
 import "./globals.css";
 import { site, siteUrl } from "@/content/site";
 import { Header } from "@/components/Header";
@@ -16,6 +16,13 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
   axes: ["opsz"],
+});
+
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -78,12 +85,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${fraunces.variable} ${anton.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-cream text-ink">
+      <body className="flex min-h-full flex-col bg-paper text-ink">
         <a
           href="#main"
-          className="focus-on-dark sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-cream"
+          className="focus-on-dark sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-paper"
         >
           Skip to content
         </a>
@@ -92,8 +99,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {/* Full-page film grain overlay (decorative, non-interactive). */}
-        <div aria-hidden className="grain" />
       </body>
     </html>
   );

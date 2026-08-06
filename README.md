@@ -13,7 +13,7 @@ The site is a statically-exported Next.js app deployed to GitHub Pages. It is in
 - [ESLint](https://eslint.org/) (`eslint-config-next`)
 - npm
 
-There is **no** database, API route, server action, authentication, CMS, analytics, or functional contact-form backend. Contact is a `mailto:` link. The site is fully static.
+There is **no** database, API route, server action, authentication, CMS, analytics, or functional contact-form backend. Contact routes through social links (LinkedIn, Substack, GitHub) — there is no email address or `mailto:` on the site. The site is fully static.
 
 ## Local setup
 
@@ -67,8 +67,7 @@ All editable copy and links live in `src/content/` — do not scatter profession
 
 - **Site copy, navigation, links, SEO** → `src/content/site.ts`
   - Hero, about, writing, and contact copy
-  - Centralized links: LinkedIn, GitHub, Substack, and email (each used exactly once from here)
-  - The Substack URL is defined **once** here and referenced everywhere
+  - Centralized links: LinkedIn, Substack, and GitHub (each defined once here and referenced everywhere; no email)
 
 ## Where project content is edited
 
@@ -76,7 +75,21 @@ All editable copy and links live in `src/content/` — do not scatter profession
   - Each project has a `title`, `category`, `status`, `summary`, optional `outcome`, and the longer `overview` / `problemSpace` / `approach` / `themes` used on its page.
   - Adding an entry automatically creates its card and its statically-generated page at `/work/<slug>`.
 
-> Placeholder values marked `TODO: confirm` in `src/content/site.ts` (LinkedIn handle, Substack URL, and public contact email) should be verified before launch.
+The social URLs in `src/content/site.ts` are verified reachable (the LinkedIn profile title confirms the slug).
+
+## Launch audit
+
+Before announcing the site, confirm:
+
+- `npm run lint` and `npm run build` pass.
+- The three social hrefs in `src/content/site.ts` exactly match the confirmed URLs:
+  - LinkedIn → `https://www.linkedin.com/in/rachdelaguila/`
+  - Substack → `https://substack.com/@rachdelaguila`
+  - GitHub → `https://github.com/rachdelaguila`
+- External links use `target="_blank"` and `rel="noopener noreferrer"`.
+- No email address or `mailto:` anywhere (`rg "mailto:|gmail|delaguila@"` returns nothing in app code).
+- Custom 404 renders; `sitemap.xml` and `robots.txt` generate.
+- Keyboard focus, contrast (AA), and reduced-motion behavior verified at 1440px and 375px.
 
 ## GitHub Pages deployment
 

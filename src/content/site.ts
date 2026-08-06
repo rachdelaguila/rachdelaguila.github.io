@@ -108,21 +108,21 @@ export const site = {
     heading: "Contact",
     lead: "Get in touch",
     description:
-      "I’m open to conversations with product and technology teams, founders, and collaborators working on trustworthy AI and complex, high-stakes products.",
+      "The fastest way to reach me is LinkedIn. For writing and everything in between, I’m on Substack.",
   },
 
   /**
    * Centralized links. Do not hardcode these URLs anywhere else.
-   * TODO: confirm — the site owner should verify these handles before launch.
+   * Verified reachable (LinkedIn profile title confirms the slug).
    */
   links: {
-    email: "rhdelaguila@gmail.com", // TODO: confirm preferred public contact address
     github: "https://github.com/rachdelaguila",
-    linkedin: "https://www.linkedin.com/in/rachelle-del-aguila", // TODO: confirm handle
-    substack: "https://rachelledelaguila.substack.com", // TODO: confirm Substack URL
+    linkedin: "https://www.linkedin.com/in/rachdelaguila/",
+    substack: "https://substack.com/@rachdelaguila",
   },
 } as const;
 
+/** General social list (used by the footer). */
 export const socialLinks: SocialLink[] = [
   {
     label: "LinkedIn",
@@ -130,18 +130,37 @@ export const socialLinks: SocialLink[] = [
     description: "Connect with Rachelle on LinkedIn",
   },
   {
-    label: "GitHub",
-    href: site.links.github,
-    description: "See Rachelle’s code and projects on GitHub",
-  },
-  {
     label: "Substack",
     href: site.links.substack,
     description: "Read Rachelle’s writing on Substack",
   },
   {
-    label: "Email",
-    href: `mailto:${site.links.email}`,
-    description: "Email Rachelle",
+    label: "GitHub",
+    href: site.links.github,
+    description: "See Rachelle’s code and projects on GitHub",
+  },
+];
+
+export type ContactCta = SocialLink & { variant: "primary" | "outline" };
+
+/** Contact CTAs: LinkedIn primary (filled), Substack + GitHub outline. */
+export const contactCtas: ContactCta[] = [
+  {
+    label: "LinkedIn",
+    href: site.links.linkedin,
+    description: "Connect with Rachelle on LinkedIn",
+    variant: "primary",
+  },
+  {
+    label: "Substack",
+    href: site.links.substack,
+    description: "Read Rachelle’s writing on Substack",
+    variant: "outline",
+  },
+  {
+    label: "GitHub",
+    href: site.links.github,
+    description: "See Rachelle’s code and projects on GitHub",
+    variant: "outline",
   },
 ];

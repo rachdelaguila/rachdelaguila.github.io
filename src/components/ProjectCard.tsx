@@ -3,7 +3,7 @@ import type { Project } from "@/content/projects";
 import { cn } from "@/lib/utils";
 import { getProjectAccent } from "@/lib/project-accents";
 import { ArrowRightIcon } from "@/components/icons";
-import { AccentShape } from "@/components/decor";
+import { Rings } from "@/components/decor";
 
 type ProjectCardProps = {
   project: Project;
@@ -19,43 +19,35 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article
       aria-labelledby={titleId}
-      className="hover-pop group relative flex h-full flex-col overflow-hidden rounded-3xl border-2 border-ink bg-cream shadow-pop"
+      className="hover-pop group relative flex h-full flex-col overflow-hidden rounded-[6px] border border-ink bg-paper shadow-pop"
     >
-      {/* Editorial "cover": colored block with an oversized number + shape. */}
-      <div className={cn("relative h-36 overflow-hidden border-b-2 border-ink", accent.block)}>
-        <AccentShape
-          shape={accent.shape}
-          className={cn(
-            "absolute -right-6 -top-6 h-32 w-32 opacity-90 transition-transform duration-500 group-hover:rotate-12",
-            accent.shapeColor,
-          )}
-        />
-        <span
-          className={cn(
-            "font-display absolute bottom-1 left-5 text-7xl leading-none",
-            accent.onBlock,
-          )}
-        >
-          {number}
-        </span>
+      {/* Thin accent color bar. */}
+      <div className={cn("h-2 w-full", accent.bar)} />
+
+      {/* Corner stamp (target or checkerboard). */}
+      <div aria-hidden className="pointer-events-none absolute right-4 top-6">
+        {accent.stamp === "rings" ? (
+          <Rings className={cn("h-10 w-10", accent.stampColor)} />
+        ) : (
+          <div className="h-9 w-9 border border-ink motif-checker text-ink/80" />
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.12em]">
-          <span className="text-ink">{project.category}</span>
+        <span className="numeral-outline text-6xl">{number}</span>
+
+        <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-condensed text-[11px] text-ink">
+          <span>{project.category}</span>
           <span aria-hidden className="text-ink/40">
             /
           </span>
-          <span className="text-ink">{project.status}</span>
+          <span className="text-ink/70">{project.status}</span>
         </div>
 
-        <h3
-          id={titleId}
-          className="font-display mt-3 text-2xl text-ink"
-        >
+        <h3 id={titleId} className="font-display mt-2 text-2xl text-ink">
           <Link
             href={href}
-            className="before:absolute before:inset-0 before:rounded-3xl before:content-['']"
+            className="before:absolute before:inset-0 before:content-['']"
           >
             {project.title}
           </Link>
@@ -65,7 +57,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <span
           aria-hidden
           className={cn(
-            "mt-2 block h-1 w-10 origin-left rounded-full transition-transform duration-300 group-hover:scale-x-[2.2] group-focus-within:scale-x-[2.2]",
+            "mt-2 block h-0.5 w-10 origin-left rounded-full transition-transform duration-300 group-hover:scale-x-[2.2] group-focus-within:scale-x-[2.2]",
             accent.bar,
           )}
         />
@@ -74,23 +66,18 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {project.summary}
         </p>
 
-        {project.outcome ? (
-          <p className="mt-4 text-sm font-semibold text-ink">{project.outcome}</p>
-        ) : null}
-
-        {/* Supplementary theme tags. */}
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {project.themes.slice(0, 3).map((theme) => (
             <li
               key={theme}
-              className="rounded-full border-[1.5px] border-ink/30 px-2.5 py-0.5 text-xs text-ink"
+              className="rounded-full border border-ink/30 px-2.5 py-0.5 text-xs text-ink"
             >
               {theme}
             </li>
           ))}
         </ul>
 
-        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-ink">
+        <span className="font-condensed mt-6 inline-flex items-center gap-1.5 text-xs text-ink">
           View project
           <ArrowRightIcon
             className="transition-transform group-hover:translate-x-1"

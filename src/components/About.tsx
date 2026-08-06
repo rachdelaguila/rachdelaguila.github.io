@@ -1,28 +1,19 @@
 import { site } from "@/content/site";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Chip, Sticker } from "@/components/ui";
-import { ArcStack, WaveDivider } from "@/components/decor";
+import { PhotoSlot } from "@/components/PhotoSlot";
 
 export function About() {
   const { about } = site;
-  const accents = ["magenta", "purple", "tangerine", "yellow"] as const;
+  const accents = ["magenta", "violet", "tangerine", "yellow"] as const;
 
   return (
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="reveal relative overflow-hidden bg-peach"
+      className="reveal relative border-t border-ink bg-paper"
     >
-      {/* Wavy transition from the cream work section into peach. */}
-      <WaveDivider className="-mt-px text-peach" flip />
-
-      {/* Decorative arc kept at the empty bottom-left edge, clear of all text. */}
-      <ArcStack
-        aria-hidden
-        className="animate-pop-float pointer-events-none absolute -left-10 bottom-4 z-0 hidden h-36 w-36 text-magenta lg:block"
-      />
-
-      <div className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 pt-6 lg:px-8">
+      <div className="mx-auto max-w-6xl scroll-mt-28 px-6 py-24 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div className="relative">
             <SectionHeading
@@ -37,9 +28,17 @@ export function About() {
               }
               className="max-w-md"
             />
-            <Sticker color="yellow" decorative className="mt-6 -rotate-3">
-              MBA · Columbia ✦
-            </Sticker>
+
+            {/* Duotone-ready portrait slot + the second (non-chrome) sticker. */}
+            <div className="mt-8 flex items-end gap-4">
+              <PhotoSlot
+                label="Portrait — duotone ready"
+                className="w-40 sm:w-48"
+              />
+              <Sticker color="magenta" decorative className="-rotate-3">
+                MBA · Columbia
+              </Sticker>
+            </div>
           </div>
 
           <div>
@@ -50,9 +49,7 @@ export function About() {
             </div>
 
             <div className="mt-8">
-              <h3 className="text-[12px] font-bold uppercase tracking-[0.15em] text-ink">
-                Focus areas
-              </h3>
+              <h3 className="font-condensed text-[12px] text-ink">Focus areas</h3>
               <ul className="mt-4 flex flex-wrap gap-2.5">
                 {about.focus.map((item, index) => (
                   <li key={item}>

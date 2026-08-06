@@ -43,29 +43,38 @@ and truthful.
 8. **Never commit directly to `master`.** Use a feature branch and open a pull
    request into `master`. Do not merge PRs without explicit approval.
 9. **Do not add backend infrastructure without explicit approval.** No servers,
-   databases, analytics, or contact-form backends. Contact stays a `mailto:`.
+   databases, analytics, or contact-form backends. Contact routes through
+   social links (LinkedIn/Substack/GitHub) — do not add an email address or
+   `mailto:` to the site.
 10. **Never commit secrets or sensitive personal information.** No API keys,
     tokens, phone numbers, home addresses, or private health data.
 
 ## Visual identity
 
-The design direction is **"Modern Psychedelic Pop meets polished editorial
-portfolio"** — bold, joyful, and expressive, grounded by navy/ivory/ink. Do not
-flatten it back into a beige, minimalist, or generic consulting look.
+The design direction is **"Y2K editorial pop"** — editorial, chic, still fun.
+Gallery-white (`paper`) and pale `lilac` backgrounds, near-black `ink` for all
+text/borders/shadows, electric `magenta` + `violet` as the two full-strength
+accents, and a chrome gradient as the signature. Tangerine/yellow are
+micro-accents only (dots, tag borders, underlines) — never section backgrounds.
 
-- The saturated palette (magenta, tangerine, electric purple, sunny yellow,
-  peach, columbia blue) is central. Use bright colors in confident, intentional
-  blocks with plenty of breathing room — not one of every color per section.
+- Typography: Fraunces (display, tightened, italic only on the one accent word
+  per heading), Space Grotesk (body), and Anton via `.font-condensed` for
+  kickers/nav/labels/buttons/marquee (uppercase, 0.12em tracking). Work numerals
+  use `.numeral-outline`.
+- The chrome gradient (`.chrome-text` / `.chrome-fill`) is used **exactly
+  twice**: the hero "Del Aguila" wordmark and one sticker. There are exactly two
+  stickers total.
 - Design tokens live in `src/app/globals.css` (`@theme`). Reusable decorative
-  primitives (blobs, arches, sunbursts, rings, waves, checkerboard) live in
-  `src/components/decor.tsx`; per-project accents live in
-  `src/lib/project-accents.ts`. Build visual identity from CSS/SVG shapes,
-  typography, and layout — never generic stock graphics, AI-brain/robot art,
-  or copied illustrations.
-- **Contrast discipline:** never place small text on a bright background. Keep
-  small/body text on light (ivory/columbia) or dark (navy/ink/purple)
-  backgrounds; reserve bright blocks (yellow/tangerine/magenta) for oversized
-  display text or decoration. Verify WCAG AA before shipping color changes.
+  primitives (rings, checkerboard, etc.) live in `src/components/decor.tsx`;
+  per-project accents (a color bar + corner stamp) live in
+  `src/lib/project-accents.ts`; photo slots use `src/components/PhotoSlot.tsx`
+  (duotone-ready). Build identity from CSS/SVG, type, and layout — never generic
+  stock graphics, AI-brain/robot art, or copied illustrations.
+- **Contrast & layering discipline:** body text is ink on white/lilac only
+  (17px/1.65, 65ch); light text (`paper`) only on ink/violet solids. Decorative
+  shapes render below text (`z-0`, `pointer-events-none`) and never sit behind a
+  paragraph, chip, link, or button; interactive elements are never occluded.
+  Verify WCAG AA before shipping color changes.
 - Keep motion restrained and gated on `prefers-reduced-motion` (see the
   `.animate-pop-*` classes, which freeze under reduced motion).
 

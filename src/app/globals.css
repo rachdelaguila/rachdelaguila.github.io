@@ -1,40 +1,42 @@
 @import "tailwindcss";
 
 /*
- * "Modern Psychedelic Pop": 70s retro-pop meets editorial fashion magazine.
- * Cream/peach backgrounds hold most of the viewport; brights sit on top and
- * pop. Ink is used for all body text, borders, and hard offset shadows.
- * Design tokens live here and are consumed via Tailwind utilities
- * (e.g. `bg-cream`, `text-ink`, `border-ink`, `bg-magenta`).
+ * "Y2K editorial pop" — gallery-white + lilac, near-black ink, electric
+ * magenta + violet accents, chrome as a signature. Editorial, chic, still fun.
+ * Tokens are consumed via Tailwind utilities (e.g. `bg-paper`, `bg-lilac`,
+ * `text-ink`, `border-ink`, `bg-magenta`, `bg-violet`).
  */
 @theme {
   /* Backgrounds */
-  --color-cream: #fff4e3;
-  --color-peach: #ffd9be;
+  --color-paper: #fafaf7; /* gallery white (primary) + light text on dark */
+  --color-lilac: #efeafb; /* alternate */
 
-  /* Brights */
+  /* Accents (the two full-strength) */
+  --color-magenta: #f5308f;
+  --color-magenta-700: #cc1f70; /* solid pills w/ paper text */
+  --color-violet: #6b2fd9;
+  --color-violet-700: #571fb0;
+
+  /* Micro-accents only (dots, tag borders, underlines) */
   --color-tangerine: #ff6b2c;
-  --color-magenta: #e62e87;
-  --color-magenta-700: #c01f6e;
-  --color-purple: #6b2fd9;
-  --color-purple-700: #571fb0;
   --color-yellow: #ffc700;
 
   /* Ink: text, borders, shadows */
-  --color-ink: #221c4e;
+  --color-ink: #14121f;
 
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
+  --font-condensed: var(--font-anton), "Arial Narrow", "Helvetica Neue", sans-serif;
 }
 
 :root {
-  --background: var(--color-cream);
+  --background: var(--color-paper);
   --foreground: var(--color-ink);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 6.5rem;
   color-scheme: light;
 }
 
@@ -42,7 +44,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  /* Readable base body type. */
   font-size: 1.0625rem; /* 17px */
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -50,45 +51,69 @@ body {
   overflow-x: hidden;
 }
 
-/* Comfortable measure for running text. */
 .measure {
   max-width: 65ch;
 }
 
-/*
- * Scrim placed between a decorative layer (z-0) and a text block (z-10) when a
- * shape would otherwise sit behind the text. It paints a soft ellipse of the
- * section's own background color (set --scrim-color) so text lands on a flat
- * field. Decorative-only; non-interactive.
- */
-.text-scrim {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  background: radial-gradient(
-    closest-side,
-    var(--scrim-color) 68%,
-    transparent 100%
-  );
+/* ---- Editorial furniture ------------------------------------------------ */
+.font-condensed {
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 400;
 }
 
-/* ---- Display type: Fraunces, heavy, tight, optical size maxed ---------- */
+/* Tightened Fraunces display. */
 .font-display {
   font-family: var(--font-serif);
-  font-weight: 900;
-  line-height: 0.95;
+  font-weight: 700;
+  line-height: 0.98;
   letter-spacing: -0.02em;
   font-variation-settings: "opsz" 144;
 }
 
-/* ---- Retro print craft ------------------------------------------------- */
-.shadow-pop {
-  box-shadow: 5px 5px 0 0 var(--color-ink);
+/* Oversized outline-stroke numerals for work cards. */
+.numeral-outline {
+  font-family: var(--font-condensed);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-ink);
+  line-height: 0.8;
 }
-.shadow-pop-sm {
+
+/* ---- Chrome signature (used exactly twice) ------------------------------ */
+.chrome-text {
+  background: linear-gradient(
+    135deg,
+    #e8e8ee 0%,
+    #b9bac9 34%,
+    #f4f4f8 52%,
+    #b9bac9 70%,
+    #e8e8ee 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-ink);
+}
+.chrome-fill {
+  background: linear-gradient(
+    135deg,
+    #e8e8ee 0%,
+    #b9bac9 40%,
+    #f4f4f8 58%,
+    #b9bac9 74%,
+    #e8e8ee 100%
+  );
+}
+
+/* ---- Print craft (sharper: hard offsets, thin borders) ------------------ */
+.shadow-pop {
   box-shadow: 3px 3px 0 0 var(--color-ink);
 }
-/* Hover lift for buttons/cards: move up-left, shadow grows. */
+.shadow-pop-sm {
+  box-shadow: 2px 2px 0 0 var(--color-ink);
+}
 .hover-pop {
   transition:
     transform 0.15s ease,
@@ -98,7 +123,7 @@ body {
 }
 .hover-pop:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 0 var(--color-ink);
+  box-shadow: 5px 5px 0 0 var(--color-ink);
 }
 
 /* Wavy magenta underline for nav links. */
@@ -111,39 +136,45 @@ body {
   text-decoration-thickness: 2px;
 }
 
-/* Retro checkerboard patch. */
+/* Y2K checkerboard micro-accent. */
 .motif-checker {
   background-image:
     linear-gradient(45deg, currentColor 25%, transparent 25%),
     linear-gradient(-45deg, currentColor 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, currentColor 75%),
     linear-gradient(-45deg, transparent 75%, currentColor 75%);
-  background-size: 16px 16px;
-  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
 }
 
-/* Full-page film grain: fixed, subtle, multiplies over everything. */
-.grain {
-  position: fixed;
+/* ---- Duotone image treatment (slots ready for real photography) --------- */
+.duotone {
+  position: relative;
+  overflow: hidden;
+}
+.duotone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.2s ease;
+}
+.duotone::after {
+  content: "";
+  position: absolute;
   inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.045;
+  background: var(--color-magenta);
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.duotone:hover::after {
+  opacity: 0.5;
 }
 
-/* ---- Motion (opt-in via classes) --------------------------------------- */
-@keyframes pop-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
+/* ---- Motion (opt-in) ---------------------------------------------------- */
 @keyframes pop-spin {
   to {
     transform: rotate(360deg);
@@ -167,31 +198,19 @@ body {
     transform: translateY(0);
   }
 }
-
-.animate-pop-float {
-  animation: pop-float 7s ease-in-out infinite;
-}
-.animate-pop-float-slow {
-  animation: pop-float 9s ease-in-out infinite;
-}
 .animate-pop-spin {
   animation: pop-spin 60s linear infinite;
   transform-origin: center;
 }
-
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 28s linear infinite;
+  animation: marquee-scroll 30s linear infinite;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
 
-/*
- * Scroll-in reveal. Guarded by @supports so browsers without scroll-driven
- * animations (and reduced-motion users) render content fully visible.
- */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
@@ -202,7 +221,6 @@ body {
   }
 }
 
-/* Respect reduced motion: freeze decorative animation + transitions. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -217,7 +235,6 @@ body {
   }
 }
 
-/* Visible, consistent keyboard focus. */
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;
