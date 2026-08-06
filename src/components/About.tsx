@@ -42,7 +42,7 @@ export function About() {
           </div>
 
           <div>
-            <div className="space-y-5 text-lg leading-relaxed text-ink text-pretty">
+            <div className="measure space-y-5 text-lg leading-relaxed text-ink text-pretty">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
