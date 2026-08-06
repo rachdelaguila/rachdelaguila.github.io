@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/*
+ * "Warm editorial collage" — fashion serif over photography (Tuesday), chunky
+ * cropped logotype + mono highlighter labels + olive ticker (WANDA), scrapbook
+ * layering. Grounds are cream/blush; ink is warm-black; coral is display +
+ * primary buttons only; olive is the ticker + highlights; violet is script
+ * annotations; gold is a micro star/sun. Consumed via Tailwind utilities.
+ */
+@theme {
+  --color-cream: #f2ebdd; /* primary ground */
+  --color-blush: #f7d6ea; /* alternate ground (tuned lighter so coral clears 3:1) */
+  --color-ink: #201d1a; /* warm black */
+  --color-coral: #de4a2a; /* display headlines + primary buttons only */
+  --color-olive: #d6cc72; /* ticker + small highlights */
+  --color-violet: #5b4fd4; /* script annotations only */
+  --color-gold: #d9a441; /* micro star / one sun stamp */
+  --color-frame: #fbf9f4; /* polaroid frame (object, not a ground) */
+
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-bodoni), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-courier), ui-monospace, "SFMono-Regular", monospace;
+  --font-script: var(--font-caveat), ui-serif, cursive;
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  color-scheme: light;
+}
+
+/* Body is the readable grotesque (Bricolage 400). */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+.measure {
+  max-width: 65ch;
+}
+
+/* ---- Type registers ----------------------------------------------------- */
+/* Fashion serif display (Bodoni Moda), roman, tight leading. */
+.font-display {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+/* Chunky sans (Bricolage 800) caps: card titles, numerals, "HI" moments. */
+.font-chunk {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.95;
+}
+/* Typewriter mono labels. */
+.mono {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+/* Highlighter behind mono labels (no border, slight padding, wraps cleanly). */
+.hl {
+  padding: 0.12em 0.4em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+/* Script annotations (Caveat), violet, decorative only. */
+.script {
+  font-family: var(--font-script);
+  color: var(--color-violet);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ---- Hero crossover ----------------------------------------------------- */
+/* Name size shared by the h1 and the photo overlap so the blush line always
+   sits ~90% over the photo (its top edge tucked behind the line). */
+.hero-name {
+  font-size: var(--hero-name);
+  line-height: 0.92;
+}
+/* Mobile fallback: photo sits below the (all-ink) name, no crossover. */
+.hero-overlap {
+  margin-top: 1.75rem;
+}
+@media (min-width: 1024px) {
+  .hero-overlap {
+    /* Pull the photo up so its top edge is behind ~90% of the blush line. */
+    margin-top: calc(var(--hero-name) * -0.86);
+  }
+}
+
+/* ---- Collage furniture -------------------------------------------------- */
+/* Tilted polaroid with a soft paper shadow. */
+.polaroid {
+  background: var(--color-frame);
+  box-shadow: 0 10px 24px -8px rgba(32, 29, 26, 0.35);
+}
+
+/* Site-wide paper grain (subtle, multiply). */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ---- Ticker ------------------------------------------------------------- */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+.focus-on-dark:focus-visible {
+  outline-color: var(--color-cream);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
