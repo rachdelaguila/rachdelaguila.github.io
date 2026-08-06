@@ -1,53 +1,99 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { getPhoto } from "@/content/photos";
 import { ArrowRightIcon } from "@/components/icons";
-import { Chip, Eyebrow } from "@/components/ui";
+import { Eyebrow, ScriptNote } from "@/components/ui";
 
 export function Hero() {
   const { hero } = site;
+  const photo = getPhoto("hero");
 
   return (
-    <section
-      id="top"
-      aria-labelledby="hero-heading"
-      className="relative bg-paper"
-    >
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-14 sm:pb-24 lg:px-8 lg:pt-20">
-        <div className="flex flex-col items-start">
-          <Eyebrow>{hero.eyebrow}</Eyebrow>
-          <span aria-hidden className="mt-2 block h-0.5 w-12 bg-magenta" />
+    <section id="top" className="relative bg-cream">
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-10 sm:pt-12 lg:px-8">
+        {/* Photo starts ~30% down; the masthead name straddles its top edge. */}
+        <div className="relative">
+          <div className="mt-24 flex aspect-[16/9] items-center justify-center overflow-hidden border border-ink bg-[#6f645b] sm:mt-28">
+            {photo.src ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full grayscale object-cover"
+              />
+            ) : (
+              <span className="mono text-[11px] text-cream/80">
+                Photo · {photo.subject}
+              </span>
+            )}
+          </div>
+
+          <h1
+            className="font-display absolute inset-x-0 top-24 z-20 -translate-y-[42%] px-1 text-blush text-[clamp(2.75rem,9vw,7rem)] text-balance sm:top-28"
+            style={{ textShadow: "0 1px 2px rgba(32,29,26,0.45)" }}
+          >
+            Rachelle Del Aguila
+          </h1>
         </div>
 
-        {/* Masthead logotype — full-width grotesque caps, ink, no color split. */}
-        <h1
-          id="hero-heading"
-          className="font-head mt-6 text-[clamp(3.25rem,13vw,10rem)] text-ink"
-        >
-          <span className="block">Rachelle</span>
-          <span className="block">Del Aguila</span>
-        </h1>
+        {/* Mono highlighter microlabels. */}
+        <ul className="mt-8 flex flex-col items-start gap-2">
+          {hero.microlabels.map((label, i) => (
+            <li key={label}>
+              <Eyebrow highlight={i === 1 ? "olive" : "blush"}>{label}</Eyebrow>
+            </li>
+          ))}
+        </ul>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-14">
           <div>
-            {/* Serif pull quote (the one per page). */}
-            <p className="max-w-2xl font-serif text-3xl font-semibold leading-tight text-ink text-pretty sm:text-4xl">
+            <p className="font-display max-w-2xl text-3xl leading-tight text-ink text-pretty sm:text-4xl">
               {hero.positioning}
             </p>
 
-            <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+            {/* Primary CTA + script annotation with a hand-drawn arrow. */}
+            <div className="relative mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href={hero.primaryCta.href}
-                className="invert-hover group inline-flex items-center justify-center gap-2 border border-ink bg-ink px-7 py-3.5 font-condensed text-sm text-paper hover:bg-paper hover:text-ink"
+                className="font-chunk inline-flex items-center justify-center gap-2 bg-coral px-7 py-3 text-xl text-cream"
               >
                 {hero.primaryCta.label}
-                <ArrowRightIcon width={18} height={18} />
+                <ArrowRightIcon width={20} height={20} />
               </Link>
               <Link
                 href={hero.secondaryCta.href}
-                className="invert-hover inline-flex items-center justify-center gap-2 border border-ink bg-paper px-7 py-3.5 font-condensed text-sm text-ink hover:bg-ink hover:text-paper"
+                className="font-chunk inline-flex items-center justify-center gap-2 border border-ink px-6 py-3 text-base text-ink transition-colors hover:bg-ink hover:text-cream"
               >
                 {hero.secondaryCta.label}
               </Link>
+
+              <span className="pointer-events-none absolute -top-9 left-2 hidden items-end gap-1 sm:flex">
+                <ScriptNote className="text-[1.6rem]">start here</ScriptNote>
+                <svg
+                  aria-hidden
+                  width="46"
+                  height="34"
+                  viewBox="0 0 46 34"
+                  fill="none"
+                  className="text-violet"
+                >
+                  <path
+                    d="M4 2c10 14 22 20 34 22"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M38 24l4 0-3-6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
             </div>
           </div>
 
@@ -57,14 +103,6 @@ export function Hero() {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-
-            <ul className="mt-7 flex flex-wrap gap-2">
-              {hero.signals.map((signal) => (
-                <li key={signal}>
-                  <Chip>{signal}</Chip>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>

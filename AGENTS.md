@@ -51,33 +51,34 @@ and truthful.
 
 ## Visual identity
 
-The design direction is **"hard editorial"** — 032c one-accent discipline,
-NYLON grotesque scale. **Three colors only:** `paper` #FAFAF7 (ground), `ink`
-#131118 (all type, borders, rules), and a single accent `magenta` #E80D6E. Do
-not reintroduce lilac, violet, yellow/tangerine, chrome, gradients, drop
-shadows, or rounded corners.
+The design direction is **"warm editorial collage"** — fashion serif over
+photography (Tuesday Marketing Co), chunky cropped logotype + mono highlighter
+labels + olive ticker (WANDA), scrapbook layering.
 
-- **Type does the work.** Anton via `.font-head` (tight caps) for the masthead
-  and section headings and `.font-condensed` (0.15em caps) for kickers, nav,
-  labels, buttons, ticker; Fraunces (serif) is body text plus one pull quote per
-  page. No italic accent words in display; no pink text in headings.
-- **Accent discipline:** magenta appears as large-area color in **exactly one
-  place per page — the ticker**. Otherwise only as 2px rules, link underlines,
-  and hover inversions. Never as a fill on rounded shapes, never on italic text,
-  never at section-background scale. (Ticker text is sized as WCAG "large" so
-  white-on-magenta clears AA.)
-- **No decoration except editorial furniture:** oversized index numerals
-  (`.numeral-outline`), 1px ink hairlines between sections, footnote-style
-  asides, the folio line under the nav, and one footer barcode wink. No blobs,
-  targets, checkerboards, stickers, or squiggles. Corners are 0px everywhere;
-  buttons are squared 1px-ink blocks or underlined links; no shadows.
-- Photography (`src/components/PhotoSlot.tsx`) is black & white only (no tint),
-  1px ink border, square/3:4, with an 11px caps caption credit.
-- **Interaction:** hover is background/text inversion (white↔ink) or an accent
-  underline reveal, ≤200ms; nothing bounces, floats, or rotates (only the
-  marquee scrolls). Everything honors `prefers-reduced-motion`.
-- **Contrast discipline:** body text is ink on white only; verify WCAG AA before
-  shipping color changes (Lighthouse a11y target 95+).
+- **Palette (7 tokens):** grounds `cream` #F2EBDD (primary) + `blush` (alternate);
+  `ink` #201D1A (warm black, all body/borders); `coral` #DE4A2A is **display
+  headlines + primary buttons only** (never body text; verify ≥3:1 at display
+  size — coral buttons use large-bold labels so cream-on-coral clears 3:1);
+  `olive` #D6CC72 is the ticker + small highlights; `violet` is script
+  annotations only; `gold` is micro star marks + one footer sun stamp. Body text
+  is always ink on cream/blush. (Blush is tuned slightly lighter than the brief's
+  #F6CFE4 so coral display text clears 3:1 on it.)
+- **Four type registers, one job each:** Bodoni Moda serif (`.font-display`) =
+  hero name + section headlines; Bricolage Grotesque (body 400, `.font-chunk`
+  800 caps) = card titles/numerals/"HI" moments; Courier Prime (`.mono`, with a
+  `.hl` highlighter background) = kickers/labels/captions/tags; Caveat
+  (`.script`, violet) = handwritten annotations. Max **3 scripts** site-wide.
+- **Collage furniture:** tilted polaroids (`.polaroid`, ±3° max, soft shadow),
+  a subtle site-wide paper `.grain` (~3% multiply), 1px ink hairlines. No
+  geometric shapes, checkerboards, chrome, or stickers except one gold sun stamp
+  in the footer. Exactly **1 ticker** (olive) and **1 stamp**.
+- **Photography** is the system (`src/content/photos.ts` manifest +
+  `src/components/PhotoSlot.tsx`): b&w or warm-muted, mono caption credit; real
+  files live in `/public/photos/`. Until then, same-dimension placeholders keep
+  the layout final. **Never use stock photography.**
+- **Verify:** squint test — the dominant element per section is the serif
+  display or a photo, never a colored shape. AA contrast on all body pairs
+  (Lighthouse a11y target 95+); respect `prefers-reduced-motion`.
 - Keep motion restrained and gated on `prefers-reduced-motion` (see the
   `.animate-pop-*` classes, which freeze under reduced motion).
 

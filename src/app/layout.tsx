@@ -1,22 +1,36 @@
 import type { Metadata } from "next";
-import { Fraunces, Anton } from "next/font/google";
+import { Bodoni_Moda, Bricolage_Grotesque, Courier_Prime, Caveat } from "next/font/google";
 import "./globals.css";
 import { site, siteUrl } from "@/content/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
   display: "swap",
-  axes: ["opsz"],
+  weight: ["600", "700"],
 });
 
-const anton = Anton({
-  variable: "--font-anton",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
   display: "swap",
-  weight: "400",
+  weight: ["400", "800"],
+});
+
+const courier = Courier_Prime({
+  variable: "--font-courier",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "700"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -79,12 +93,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${anton.variable} h-full antialiased`}
+      className={`${bodoni.variable} ${bricolage.variable} ${courier.variable} ${caveat.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-paper text-ink">
+      <body className="flex min-h-full flex-col bg-cream text-ink">
         <a
           href="#main"
-          className="focus-on-dark sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-paper"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-cream"
         >
           Skip to content
         </a>
@@ -93,6 +107,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {/* Site-wide paper grain (decorative, non-interactive). */}
+        <div aria-hidden className="grain" />
       </body>
     </html>
   );

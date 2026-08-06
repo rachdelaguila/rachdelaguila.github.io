@@ -19,12 +19,12 @@ export function Header() {
   return (
     <header
       className={cn(
-        "invert-hover sticky top-0 z-50 border-b border-ink",
-        scrolled ? "bg-paper/95 backdrop-blur-sm" : "bg-paper",
+        "sticky top-0 z-50 border-b border-ink transition-colors",
+        scrolled ? "bg-cream/95 backdrop-blur-sm" : "bg-cream",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
-        <Link href="/#top" className="font-head text-lg text-ink">
+        <Link href="/#top" className="font-display text-xl text-ink">
           Rachelle Del Aguila
         </Link>
 
@@ -34,7 +34,7 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="link-underline font-condensed text-[11px] text-ink"
+                  className="mono text-[11px] text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-colors hover:decoration-coral"
                 >
                   {item.label}
                 </Link>
@@ -43,7 +43,7 @@ export function Header() {
             <li>
               <Link
                 href="/#contact"
-                className="invert-hover inline-flex items-center border border-ink bg-ink px-4 py-2 font-condensed text-[11px] text-paper hover:bg-paper hover:text-ink"
+                className="mono inline-flex items-center bg-ink px-4 py-2 text-[11px] text-cream transition-colors hover:bg-coral"
               >
                 Get in touch
               </Link>
@@ -56,9 +56,11 @@ export function Header() {
 
       {/* Folio microline (facts only), under a hairline. */}
       <div className="border-t border-ink/15">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-1.5 font-condensed text-[10px] text-ink/70 lg:px-8">
-          <span>AI Product Strategist · Technical Product Builder</span>
-          <span className="hidden sm:inline">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-1.5 lg:px-8">
+          <span className="mono text-[10px] text-ink/70">
+            AI Product Strategist · Technical Product Builder · NYC
+          </span>
+          <span className="mono hidden text-[10px] text-ink/70 sm:inline">
             Focus: Trustworthy AI &amp; Enterprise Systems
           </span>
         </div>

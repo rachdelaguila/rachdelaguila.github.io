@@ -1,39 +1,46 @@
 @import "tailwindcss";
 
 /*
- * "Hard editorial" — 032c one-accent discipline, NYLON grotesque scale.
- * Three colors only: paper (ground), ink (type/rules), magenta (single accent).
- * Type does the work; the accent appears as large-area color exactly once
- * per page (the ticker). Consumed via Tailwind utilities (bg-paper, text-ink,
- * bg-magenta, border-ink).
+ * "Warm editorial collage" — fashion serif over photography (Tuesday), chunky
+ * cropped logotype + mono highlighter labels + olive ticker (WANDA), scrapbook
+ * layering. Grounds are cream/blush; ink is warm-black; coral is display +
+ * primary buttons only; olive is the ticker + highlights; violet is script
+ * annotations; gold is a micro star/sun. Consumed via Tailwind utilities.
  */
 @theme {
-  --color-paper: #fafaf7;
-  --color-ink: #131118;
-  --color-magenta: #e80d6e;
+  --color-cream: #f2ebdd; /* primary ground */
+  --color-blush: #f7d6ea; /* alternate ground (tuned lighter so coral clears 3:1) */
+  --color-ink: #201d1a; /* warm black */
+  --color-coral: #de4a2a; /* display headlines + primary buttons only */
+  --color-olive: #d6cc72; /* ticker + small highlights */
+  --color-violet: #5b4fd4; /* script annotations only */
+  --color-gold: #d9a441; /* micro star / one sun stamp */
+  --color-frame: #fbf9f4; /* polaroid frame (object, not a ground) */
 
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
-  --font-condensed: var(--font-anton), "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-bodoni), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-courier), ui-monospace, "SFMono-Regular", monospace;
+  --font-script: var(--font-caveat), ui-serif, cursive;
 }
 
 :root {
-  --background: var(--color-paper);
+  --background: var(--color-cream);
   --foreground: var(--color-ink);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6.5rem;
+  scroll-padding-top: 6rem;
   color-scheme: light;
 }
 
-/* Body is serif (Fraunces demoted to running text). */
+/* Body is the readable grotesque (Bricolage 400). */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.0625rem; /* 17px */
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -43,80 +50,59 @@ body {
   max-width: 65ch;
 }
 
-/* ---- Grotesque display + labels (Anton) --------------------------------- */
-/* Masthead + section headings: heavy condensed caps, tight, huge. */
-.font-head {
-  font-family: var(--font-condensed);
-  text-transform: uppercase;
+/* ---- Type registers ----------------------------------------------------- */
+/* Fashion serif display (Bodoni Moda), roman, tight leading. */
+.font-display {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 0.98;
   letter-spacing: -0.01em;
-  line-height: 0.9;
-  font-weight: 400;
 }
-/* Kickers / labels / nav / buttons / folio: caps grotesque with tracking. */
-.font-condensed {
-  font-family: var(--font-condensed);
+/* Chunky sans (Bricolage 800) caps: card titles, numerals, "HI" moments. */
+.font-chunk {
+  font-family: var(--font-sans);
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 0.95;
 }
-/* Oversized index numerals (outline stroke). */
-.numeral-outline {
-  font-family: var(--font-condensed);
-  color: transparent;
-  -webkit-text-stroke: 2px var(--color-ink);
-  line-height: 0.8;
+/* Typewriter mono labels. */
+.mono {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
-
-/* ---- Editorial furniture ------------------------------------------------ */
-/* Footnote-style aside markers. */
-.footnote-ref {
-  font-family: var(--font-condensed);
-  font-size: 0.6em;
-  vertical-align: super;
-  letter-spacing: 0.05em;
+/* Highlighter behind mono labels (no border, slight padding, wraps cleanly). */
+.hl {
+  padding: 0.12em 0.4em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
-/* Footer barcode — the single wink, pure CSS. */
-.barcode {
-  height: 2.25rem;
-  width: 9rem;
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--color-paper) 0 1px,
-    transparent 1px 2px,
-    var(--color-paper) 2px 5px,
-    transparent 5px 6px,
-    var(--color-paper) 6px 7px,
-    transparent 7px 10px
-  );
+/* Script annotations (Caveat), violet, decorative only. */
+.script {
+  font-family: var(--font-script);
+  color: var(--color-violet);
+  font-weight: 700;
+  line-height: 1;
 }
 
-/* ---- Interaction: inversion / accent underline, <=200ms ----------------- */
-.invert-hover {
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease,
-    border-color 0.15s ease;
-}
-/* Accent underline reveal for links. */
-.link-underline {
-  background-image: linear-gradient(var(--color-magenta), var(--color-magenta));
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 2px;
-  transition: background-size 0.15s ease;
-}
-.link-underline:hover,
-.link-underline:focus-visible {
-  background-size: 100% 2px;
+/* ---- Collage furniture -------------------------------------------------- */
+/* Tilted polaroid with a soft paper shadow. */
+.polaroid {
+  background: var(--color-frame);
+  box-shadow: 0 10px 24px -8px rgba(32, 29, 26, 0.35);
 }
 
-/* ---- Photography: black & white only, no tint -------------------------- */
-.bw-photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.05);
+/* Site-wide paper grain (subtle, multiply). */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
 }
 
 /* ---- Ticker ------------------------------------------------------------- */
@@ -131,7 +117,7 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 34s linear infinite;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
@@ -151,13 +137,12 @@ body {
   }
 }
 
-/* Focus: visible, squared. */
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;
 }
 .focus-on-dark:focus-visible {
-  outline-color: var(--color-paper);
+  outline-color: var(--color-cream);
 }
 
 .text-balance {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/icons";
+import { Eyebrow } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -9,27 +10,27 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="bg-paper">
+    <section className="bg-cream">
       <div className="mx-auto flex max-w-3xl flex-col items-start px-6 py-24 sm:py-32 lg:px-8">
-        <span className="numeral-outline text-8xl">404</span>
-        <h1 className="font-head mt-4 text-4xl text-ink sm:text-5xl">
+        <Eyebrow highlight="olive">Error 404</Eyebrow>
+        <h1 className="font-display mt-5 text-5xl text-coral sm:text-6xl">
           This page wandered off
         </h1>
-        <p className="measure mt-4 font-serif text-lg leading-relaxed text-ink text-pretty">
+        <p className="measure mt-5 leading-relaxed text-ink text-pretty">
           The page you’re looking for doesn’t exist or may have moved. Let’s get
           you back to something useful.
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Link
             href="/"
-            className="invert-hover inline-flex items-center justify-center gap-2 border border-ink bg-ink px-7 py-3.5 font-condensed text-sm text-paper hover:bg-paper hover:text-ink"
+            className="font-chunk inline-flex items-center justify-center gap-2 bg-coral px-7 py-3 text-xl text-cream"
           >
             Back to home
-            <ArrowRightIcon width={18} height={18} />
+            <ArrowRightIcon width={20} height={20} />
           </Link>
           <Link
             href="/#work"
-            className="invert-hover inline-flex items-center justify-center gap-2 border border-ink bg-paper px-7 py-3.5 font-condensed text-sm text-ink hover:bg-ink hover:text-paper"
+            className="font-chunk inline-flex items-center justify-center gap-2 border border-ink px-6 py-3 text-base text-ink transition-colors hover:bg-ink hover:text-cream"
           >
             View selected work
           </Link>

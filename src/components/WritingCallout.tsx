@@ -1,55 +1,55 @@
 import { site } from "@/content/site";
+import { getPhoto } from "@/content/photos";
+import { SectionHeading } from "@/components/SectionHeading";
+import { PhotoSlot } from "@/components/PhotoSlot";
+import { Chip } from "@/components/ui";
 import { ArrowUpRightIcon } from "@/components/icons";
 
 export function WritingCallout() {
   const { writing, links } = site;
+  const thumb = getPhoto("writing");
 
   return (
     <section
       id="writing"
       aria-labelledby="writing-heading"
-      className="scroll-mt-28 border-y border-ink bg-ink text-paper"
+      className="scroll-mt-24 border-t border-ink bg-blush"
     >
-      <div className="mx-auto max-w-4xl px-6 py-24 lg:px-8">
-        <div className="flex flex-col items-start">
-          <span className="font-condensed text-[11px] text-paper">
-            {writing.heading}
-          </span>
-          <span aria-hidden className="mt-2 block h-0.5 w-12 bg-magenta" />
-        </div>
+      <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+          <div>
+            <SectionHeading
+              id="writing-heading"
+              eyebrow="Writing"
+              eyebrowHighlight="olive"
+              coral
+              title="How do we build trusted technology, and who do we become while trying?"
+              description={writing.description}
+            />
 
-        {/* The one serif pull quote per page. */}
-        <h2
-          id="writing-heading"
-          className="mt-8 font-serif text-4xl font-semibold leading-[1.08] text-paper text-balance sm:text-6xl"
-        >
-          How do we build trusted technology, and who do we become while trying?
-        </h2>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {writing.themes.map((theme, i) => (
+                <li key={theme}>
+                  <Chip highlight={i % 2 === 0 ? "olive" : "none"} className={i % 2 === 0 ? "" : "border border-ink/30 px-2 py-0.5"}>
+                    {theme}
+                  </Chip>
+                </li>
+              ))}
+            </ul>
 
-        <p className="measure mt-8 leading-relaxed text-paper text-pretty">
-          {writing.description}
-        </p>
-
-        <ul className="mt-8 flex flex-wrap gap-2">
-          {writing.themes.map((theme) => (
-            <li
-              key={theme}
-              className="invert-hover font-condensed border border-paper px-3 py-1.5 text-[11px] text-paper hover:bg-paper hover:text-ink"
+            <a
+              href={links.substack}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-chunk mt-9 inline-flex items-center gap-2 bg-coral px-7 py-3 text-xl text-cream"
             >
-              {theme}
-            </li>
-          ))}
-        </ul>
+              Read on Substack
+              <ArrowUpRightIcon width={20} height={20} />
+            </a>
+          </div>
 
-        <a
-          href={links.substack}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="invert-hover focus-on-dark group mt-10 inline-flex items-center gap-2 border border-paper bg-ink px-7 py-3.5 font-condensed text-sm text-paper hover:bg-paper hover:text-ink"
-        >
-          Read on Substack
-          <ArrowUpRightIcon width={18} height={18} />
-        </a>
+          <PhotoSlot photo={thumb} variant="plain" className="self-start" />
+        </div>
       </div>
     </section>
   );

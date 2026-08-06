@@ -1,5 +1,5 @@
 import { site, contactCtas } from "@/content/site";
-import { Eyebrow } from "@/components/ui";
+import { Eyebrow, ScriptNote } from "@/components/ui";
 import { iconForLabel } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
@@ -10,51 +10,54 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="border-t border-ink bg-paper"
+      className="border-t border-ink bg-cream"
     >
-      {/* Composed closing: centered, generous whitespace, LinkedIn dominant. */}
-      <div className="mx-auto flex max-w-3xl scroll-mt-28 flex-col items-center px-6 py-28 text-center sm:py-32 lg:px-8">
-        <div className="flex flex-col items-center">
-          <Eyebrow>{contact.heading}</Eyebrow>
-          <span aria-hidden className="mt-2 block h-0.5 w-12 bg-magenta" />
-        </div>
+      {/* Composed closing moment: centered, generous whitespace. */}
+      <div className="mx-auto flex max-w-3xl scroll-mt-24 flex-col items-center px-6 py-28 text-center sm:py-32 lg:px-8">
+        <Eyebrow highlight="olive">{contact.heading}</Eyebrow>
 
         <h2
           id="contact-heading"
-          className="font-head mt-6 text-5xl text-ink sm:text-6xl"
+          className="font-display mt-6 text-6xl text-ink sm:text-7xl"
         >
           Get in touch
         </h2>
 
-        <p className="measure mt-6 font-serif text-lg leading-relaxed text-ink text-pretty">
+        <p className="measure mt-6 leading-relaxed text-ink text-pretty">
           {contact.description}
         </p>
 
-        <ul className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          {contactCtas.map((cta) => {
-            const Icon = iconForLabel(cta.label);
-            const isPrimary = cta.variant === "primary";
-            return (
-              <li key={cta.label}>
-                <a
-                  href={cta.href}
-                  aria-label={cta.description}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    "invert-hover font-condensed inline-flex items-center justify-center gap-2 border border-ink",
-                    isPrimary
-                      ? "bg-ink px-10 py-4 text-base text-paper hover:bg-paper hover:text-ink"
-                      : "bg-paper px-6 py-3 text-sm text-ink hover:bg-ink hover:text-paper",
-                  )}
-                >
-                  <Icon width={isPrimary ? 22 : 18} height={isPrimary ? 22 : 18} />
-                  {cta.label}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="relative mt-10">
+          <ul className="flex flex-wrap items-center justify-center gap-4">
+            {contactCtas.map((cta) => {
+              const Icon = iconForLabel(cta.label);
+              const isPrimary = cta.variant === "primary";
+              return (
+                <li key={cta.label}>
+                  <a
+                    href={cta.href}
+                    aria-label={cta.description}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "font-chunk inline-flex items-center justify-center gap-2",
+                      isPrimary
+                        ? "bg-coral px-9 py-4 text-xl text-cream"
+                        : "border border-ink px-6 py-3.5 text-base text-ink transition-colors hover:bg-ink hover:text-cream",
+                    )}
+                  >
+                    <Icon width={isPrimary ? 22 : 18} height={isPrimary ? 22 : 18} />
+                    {cta.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          <ScriptNote className="absolute -bottom-9 right-2 -rotate-6 text-[1.7rem]">
+            let’s make something
+          </ScriptNote>
+        </div>
       </div>
     </section>
   );

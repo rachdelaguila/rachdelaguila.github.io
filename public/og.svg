@@ -1,12 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Rachelle Del Aguila — AI product strategist and technical product builder">
-  <rect width="1200" height="630" fill="#fafaf7" />
-  <rect x="12" y="12" width="1176" height="606" fill="none" stroke="#131118" stroke-width="2" />
-  <!-- kicker + accent rule -->
-  <text x="80" y="130" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4" fill="#131118">AI PRODUCT STRATEGIST · TECHNICAL PRODUCT BUILDER</text>
-  <rect x="80" y="150" width="80" height="4" fill="#e80d6e" />
+  <rect width="1200" height="630" fill="#f2ebdd" />
+  <!-- olive ticker strip -->
+  <rect x="0" y="70" width="1200" height="44" fill="#d6cc72" />
+  <line x1="0" y1="70" x2="1200" y2="70" stroke="#201d1a" stroke-width="2" />
+  <line x1="0" y1="114" x2="1200" y2="114" stroke="#201d1a" stroke-width="2" />
+  <text x="80" y="100" font-family="'Courier New', monospace" font-size="20" letter-spacing="3" fill="#201d1a">WORK ? ABOUT ? WRITING ? CONTACT ? WORK ? ABOUT ? WRITING ? CONTACT</text>
   <!-- masthead -->
-  <text x="76" y="330" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#131118">RACHELLE</text>
-  <text x="76" y="470" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#131118">DEL AGUILA</text>
-  <!-- footer line -->
-  <text x="80" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#131118">Trustworthy AI · Enterprise systems · Operational transformation</text>
+  <text x="76" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-weight="700" fill="#de4a2a">Rachelle</text>
+  <text x="76" y="420" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-weight="700" fill="#de4a2a">Del Aguila</text>
+  <!-- mono labels -->
+  <text x="80" y="500" font-family="'Courier New', monospace" font-size="24" letter-spacing="2" fill="#201d1a">AI PRODUCT STRATEGY · ENTERPRISE SYSTEMS · TRUST · NYC</text>
+  <text x="80" y="545" font-family="Georgia, serif" font-size="26" fill="#201d1a">Turning ambiguity into products and operating systems.</text>
 </svg>

@@ -1,21 +1,20 @@
 import Link from "next/link";
 import { site, socialLinks } from "@/content/site";
 import { iconForLabel } from "@/components/icons";
+import { SunStamp } from "@/components/ui";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-ink bg-ink text-paper">
+    <footer className="border-t border-ink bg-cream text-ink">
       <div className="mx-auto max-w-6xl px-6 py-14 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-sm">
-            <Link href="/#top" className="focus-on-dark font-head text-2xl text-paper">
+            <Link href="/#top" className="font-display text-2xl text-ink">
               Rachelle Del Aguila
             </Link>
-            <p className="mt-3 font-serif text-sm leading-relaxed text-paper">
-              {site.role}.
-            </p>
+            <p className="mt-3 leading-relaxed text-ink">{site.role}.</p>
           </div>
 
           <nav aria-label="Footer" className="flex flex-col gap-6 sm:items-end">
@@ -24,7 +23,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="focus-on-dark link-underline font-condensed text-[11px] text-paper"
+                    className="mono text-[11px] text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-colors hover:decoration-coral"
                   >
                     {item.label}
                   </Link>
@@ -41,7 +40,7 @@ export function Footer() {
                       aria-label={link.description}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="invert-hover focus-on-dark inline-flex h-11 w-11 items-center justify-center border border-paper/50 text-paper hover:bg-paper hover:text-ink"
+                      className="inline-flex h-11 w-11 items-center justify-center border border-ink text-ink transition-colors hover:bg-ink hover:text-cream"
                     >
                       <Icon width={18} height={18} />
                     </a>
@@ -52,18 +51,12 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-paper/20 pt-6 sm:flex-row sm:items-end sm:justify-between">
-          <p className="font-serif text-sm text-paper">
-            © {year} {site.name}. Built with Next.js and deployed on GitHub
-            Pages.
+        <div className="mt-10 flex flex-col gap-4 border-t border-ink/20 pt-6 sm:flex-row sm:items-end sm:justify-between">
+          <p className="mono text-[11px] text-ink/80">
+            © {year} {site.name} · Built with Next.js · GitHub Pages
           </p>
-          {/* The single wink: a barcode stamp. */}
-          <div className="flex flex-col items-start gap-1 sm:items-end">
-            <span aria-hidden className="barcode" />
-            <span className="font-condensed text-[10px] text-paper/70">
-              {site.name}
-            </span>
-          </div>
+          {/* The single stamp — a small gold sun. */}
+          <SunStamp className="h-10 w-10 text-gold" />
         </div>
       </div>
     </footer>

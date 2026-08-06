@@ -1,60 +1,85 @@
+import type { CSSProperties } from "react";
+import type { Photo } from "@/content/photos";
 import { cn } from "@/lib/utils";
 
-/**
- * Editorial photo slot: black & white only (no tint), 1px ink border, square
- * or 3:4 crop, with an 11px caps caption underneath like a photo credit. With
- * no `src`, it renders a labeled placeholder. When a real photo is added, pass
- * `src`/`alt`; explicit width/height + lazy loading keep the speed floor.
- */
-type PhotoSlotProps = {
-  label: string;
-  caption?: string;
-  alt?: string;
-  src?: string;
-  className?: string;
-  aspect?: string;
-  width?: number;
-  height?: number;
+const CROP_ASPECT: Record<Photo["crop"], string> = {
+  landscape: "aspect-[16/10]",
+  portrait: "aspect-[3/4]",
+  square: "aspect-square",
 };
 
+type PhotoSlotProps = {
+  photo: Photo;
+  variant?: "plain" | "polaroid";
+  /** Rotation in degrees for polaroids (kept within ±3). */
+  rotate?: number;
+  className?: string;
+  /** Override the placeholder block color/text (e.g. the darker hero slot). */
+  placeholderClassName?: string;
+};
+
+function Inner({ photo, placeholderClassName }: Pick<PhotoSlotProps, "photo" | "placeholderClassName">) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center overflow-hidden",
+        CROP_ASPECT[photo.crop],
+        placeholderClassName ?? "bg-blush",
+      )}
+    >
+      {photo.src ? (
+        // Static export; unoptimized <img> is intentional. b&w treatment, lazy.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={photo.src}
+          alt={photo.alt}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full grayscale object-cover"
+        />
+      ) : (
+        <span className="mono px-3 text-center text-[11px] text-ink/70">
+          Photo · {photo.subject}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export function PhotoSlot({
-  label,
-  caption,
-  alt,
-  src,
+  photo,
+  variant = "plain",
+  rotate = 0,
   className,
-  aspect = "aspect-[3/4]",
-  width = 800,
-  height = 1000,
+  placeholderClassName,
 }: PhotoSlotProps) {
+  const clampedRotate = Math.max(-3, Math.min(3, rotate));
+  const style: CSSProperties =
+    variant === "polaroid" ? { transform: `rotate(${clampedRotate}deg)` } : {};
+
+  if (variant === "polaroid") {
+    return (
+      <figure className={cn("polaroid p-2.5 pb-3", className)} style={style}>
+        <div className="border border-ink/15">
+          <Inner photo={photo} placeholderClassName={placeholderClassName} />
+        </div>
+        {photo.credit ? (
+          <figcaption className="mono mt-2 text-[10px] text-ink/70">
+            {photo.credit}
+          </figcaption>
+        ) : null}
+      </figure>
+    );
+  }
+
   return (
     <figure className={cn("flex flex-col", className)}>
-      <div
-        className={cn(
-          "bw-photo relative flex items-center justify-center overflow-hidden border border-ink bg-paper",
-          aspect,
-        )}
-      >
-        {src ? (
-          // Static export uses unoptimized images; a plain <img> is intentional.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={src}
-            alt={alt ?? ""}
-            width={width}
-            height={height}
-            loading="lazy"
-            decoding="async"
-          />
-        ) : (
-          <span className="font-condensed pointer-events-none px-4 text-center text-[11px] text-ink/60">
-            {label}
-          </span>
-        )}
+      <div className="border border-ink">
+        <Inner photo={photo} placeholderClassName={placeholderClassName} />
       </div>
-      {caption ? (
-        <figcaption className="font-condensed mt-2 text-[10px] text-ink/70">
-          {caption}
+      {photo.credit ? (
+        <figcaption className="mono mt-2 text-[10px] text-ink/70">
+          {photo.credit}
         </figcaption>
       ) : null}
     </figure>

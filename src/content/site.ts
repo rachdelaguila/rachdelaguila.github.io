@@ -70,6 +70,12 @@ export const site = {
       "Trust, governance & adoption",
       "Enterprise & financial systems",
     ],
+    /** Mono highlighter microlabels stacked under the masthead name. */
+    microlabels: [
+      "AI product strategy & technical building",
+      "Enterprise systems · trust · adoption",
+      "NYC",
+    ],
   },
 
   about: {
