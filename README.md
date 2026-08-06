@@ -13,7 +13,7 @@ The site is a statically-exported Next.js app deployed to GitHub Pages. It is in
 - [ESLint](https://eslint.org/) (`eslint-config-next`)
 - npm
 
-There is **no** database, API route, server action, authentication, CMS, analytics, or functional contact-form backend. Contact routes through social links (LinkedIn, Substack, GitHub) — there is no email address or `mailto:` on the site. The site is fully static.
+There is **no** database, API route, server action, authentication, CMS, analytics, or functional contact-form backend. Contact routes through social links (LinkedIn, Instagram, Substack, GitHub) — there is no email address or `mailto:` on the site. The site is fully static.
 
 ## Local setup
 
@@ -75,15 +75,16 @@ All editable copy and links live in `src/content/` — do not scatter profession
   - Each project has a `title`, `category`, `status`, `summary`, optional `outcome`, and the longer `overview` / `problemSpace` / `approach` / `themes` used on its page.
   - Adding an entry automatically creates its card and its statically-generated page at `/work/<slug>`.
 
-The social URLs in `src/content/site.ts` are verified reachable (the LinkedIn profile title confirms the slug).
+The social URLs in `src/content/site.ts` are verified public profiles.
 
 ## Launch audit
 
 Before announcing the site, confirm:
 
 - `npm run lint` and `npm run build` pass.
-- The three social hrefs in `src/content/site.ts` exactly match the confirmed URLs:
+- The social hrefs in `src/content/site.ts` match:
   - LinkedIn → `https://www.linkedin.com/in/rachdelaguila/`
+  - Instagram → `https://www.instagram.com/rachdelaguila/`
   - Substack → `https://substack.com/@rachdelaguila`
   - GitHub → `https://github.com/rachdelaguila`
 - External links use `target="_blank"` and `rel="noopener noreferrer"`.
@@ -113,9 +114,9 @@ Until that setting is changed, the Actions workflow will build successfully but 
 
 ## Known next steps
 
-- Confirm/replace the `TODO: confirm` links (LinkedIn, Substack) and public email in `src/content/site.ts`.
+- Drop approved black-and-white photographs into `/public/photos/` and set each `src` in `src/content/photos.ts` (editorial graphics keep the layout until then).
 - Expand the preliminary project pages into full case studies as content becomes available and approved.
-- Consider adding a raster (PNG) Open Graph image; `public/og.svg` is a placeholder that some social scrapers may not render.
+- Consider adding a raster (PNG) Open Graph image; `public/og.svg` works for many scrapers, but a PNG is more widely supported.
 
 ## Contributing / agent guidance
 

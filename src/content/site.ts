@@ -4,10 +4,6 @@
  * Edit professional claims, links, and section copy here rather than inside
  * components. Keep everything truthful — do not add metrics, employers, or
  * outcomes that are not already public and supportable.
- *
- * Values marked `TODO: confirm` are placeholders that the site owner should
- * verify or replace before launch. They are intentionally centralized so a
- * single edit updates every usage.
  */
 
 export type NavItem = {
@@ -38,7 +34,7 @@ export const site = {
     title: "Rachelle Del Aguila — AI Product Strategist & Technical Product Builder",
     description:
       "Rachelle Del Aguila is an AI product strategist and technical product builder working at the intersection of enterprise systems, trustworthy AI, and operational transformation.",
-    /** Relative to the site root; generated as an SVG placeholder in /public. */
+    /** Relative to the site root; `public/og.svg` is the Open Graph image. */
     ogImage: "/og.svg",
     locale: "en_US",
   },
@@ -84,7 +80,7 @@ export const site = {
     paragraphs: [
       "I work as an AI product strategist and technical product builder, spanning product strategy, enterprise technology, and the operational realities of financial and trading systems.",
       "That combination shapes how I work: I care as much about how a system is adopted and governed as I do about whether it ships.",
-      "I hold an MBA from Columbia Business School, which sharpened an operator’s instinct I’d already been building in enterprise environments — reading a business, finding where the workflow actually breaks, and turning that understanding into products people can rely on.",
+      "I’m currently an MBA candidate at Columbia Business School, Class of 2027, where I’m sharpening the operator’s instinct I built in enterprise environments — reading a business, finding where the workflow actually breaks, and turning that understanding into products people can rely on.",
       "Across trading technology, enterprise AI adoption, and early-stage product discovery, I’ve learned that trust is the real unlock. The most interesting problems aren’t only technical; they’re about whether people believe a system enough to change how they work.",
     ],
     /** Grounded, qualitative themes — not credentials to inflate. */
@@ -118,16 +114,17 @@ export const site = {
     heading: "Contact",
     lead: "Get in touch",
     description:
-      "The fastest way to reach me is LinkedIn. For writing and everything in between, I’m on Substack.",
+      "The fastest way to reach me is LinkedIn. You can also find me on Instagram, Substack, and GitHub.",
   },
 
   /**
    * Centralized links. Do not hardcode these URLs anywhere else.
-   * Verified reachable (LinkedIn profile title confirms the slug).
+   * Verified public profiles.
    */
   links: {
     github: "https://github.com/rachdelaguila",
     linkedin: "https://www.linkedin.com/in/rachdelaguila/",
+    instagram: "https://www.instagram.com/rachdelaguila/",
     substack: "https://substack.com/@rachdelaguila",
   },
 } as const;
@@ -138,6 +135,11 @@ export const socialLinks: SocialLink[] = [
     label: "LinkedIn",
     href: site.links.linkedin,
     description: "Connect with Rachelle on LinkedIn",
+  },
+  {
+    label: "Instagram",
+    href: site.links.instagram,
+    description: "Follow Rachelle on Instagram",
   },
   {
     label: "Substack",
@@ -153,13 +155,19 @@ export const socialLinks: SocialLink[] = [
 
 export type ContactCta = SocialLink & { variant: "primary" | "outline" };
 
-/** Contact CTAs: LinkedIn primary (filled), Substack + GitHub outline. */
+/** Contact CTAs: LinkedIn primary (filled); Instagram, Substack, GitHub outline. */
 export const contactCtas: ContactCta[] = [
   {
     label: "LinkedIn",
     href: site.links.linkedin,
     description: "Connect with Rachelle on LinkedIn",
     variant: "primary",
+  },
+  {
+    label: "Instagram",
+    href: site.links.instagram,
+    description: "Follow Rachelle on Instagram",
+    variant: "outline",
   },
   {
     label: "Substack",

@@ -17,7 +17,13 @@ export function About() {
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div className="relative">
-            <PhotoSlot photo={portrait} variant="polaroid" rotate={-2} className="w-56 sm:w-64" />
+            <PhotoSlot
+              id="about"
+              photo={portrait}
+              variant="polaroid"
+              rotate={-2}
+              className="w-56 sm:w-64"
+            />
             <ScriptNote className="absolute -right-2 top-2 rotate-6 text-[1.7rem] sm:right-6">
               that’s me
             </ScriptNote>

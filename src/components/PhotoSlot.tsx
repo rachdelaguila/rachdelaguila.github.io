@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
-import type { Photo } from "@/content/photos";
+import type { Photo, PhotoId } from "@/content/photos";
+import { EditorialArt } from "@/components/EditorialArt";
 import { cn } from "@/lib/utils";
 
 const CROP_ASPECT: Record<Photo["crop"], string> = {
@@ -9,27 +10,32 @@ const CROP_ASPECT: Record<Photo["crop"], string> = {
 };
 
 type PhotoSlotProps = {
+  /** Manifest key — used to select editorial artwork when `src` is unset. */
+  id: PhotoId;
   photo: Photo;
   variant?: "plain" | "polaroid";
   /** Rotation in degrees for polaroids (kept within ±3). */
   rotate?: number;
   className?: string;
-  /** Override the placeholder block color/text (e.g. the darker hero slot). */
+  /** Override the empty-slot background when no artwork is available. */
   placeholderClassName?: string;
 };
 
-function Inner({ photo, placeholderClassName }: Pick<PhotoSlotProps, "photo" | "placeholderClassName">) {
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-center overflow-hidden",
-        CROP_ASPECT[photo.crop],
-        placeholderClassName ?? "bg-blush",
-      )}
-    >
-      {photo.src ? (
-        // Static export; unoptimized <img> is intentional. b&w treatment, lazy.
-        // eslint-disable-next-line @next/next/no-img-element
+function Inner({
+  id,
+  photo,
+  placeholderClassName,
+}: Pick<PhotoSlotProps, "id" | "photo" | "placeholderClassName">) {
+  if (photo.src) {
+    return (
+      <div
+        className={cn(
+          "flex items-center justify-center overflow-hidden",
+          CROP_ASPECT[photo.crop],
+        )}
+      >
+        {/* Static export; unoptimized <img> is intentional. b&w treatment, lazy. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={photo.src}
           alt={photo.alt}
@@ -37,16 +43,15 @@ function Inner({ photo, placeholderClassName }: Pick<PhotoSlotProps, "photo" | "
           decoding="async"
           className="h-full w-full grayscale object-cover"
         />
-      ) : (
-        <span className="mono px-3 text-center text-[11px] text-ink/70">
-          Photo · {photo.subject}
-        </span>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  return <EditorialArt id={id} className={placeholderClassName} />;
 }
 
 export function PhotoSlot({
+  id,
   photo,
   variant = "plain",
   rotate = 0,
@@ -61,7 +66,11 @@ export function PhotoSlot({
     return (
       <figure className={cn("polaroid p-2.5 pb-3", className)} style={style}>
         <div className="border border-ink/15">
-          <Inner photo={photo} placeholderClassName={placeholderClassName} />
+          <Inner
+            id={id}
+            photo={photo}
+            placeholderClassName={placeholderClassName}
+          />
         </div>
         {photo.credit ? (
           <figcaption className="mono mt-2 text-[10px] text-ink/70">
@@ -75,7 +84,11 @@ export function PhotoSlot({
   return (
     <figure className={cn("flex flex-col", className)}>
       <div className="border border-ink">
-        <Inner photo={photo} placeholderClassName={placeholderClassName} />
+        <Inner
+          id={id}
+          photo={photo}
+          placeholderClassName={placeholderClassName}
+        />
       </div>
       {photo.credit ? (
         <figcaption className="mono mt-2 text-[10px] text-ink/70">

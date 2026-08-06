@@ -51,7 +51,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const index = projects.findIndex((p) => p.slug === project.slug);
   const number = String(index + 1).padStart(2, "0");
-  const photo = getPhoto(`work-${project.slug}` as PhotoId);
+  const photoId = `work-${project.slug}` as PhotoId;
+  const photo = getPhoto(photoId);
 
   const sections: Array<{ heading: string; body: string }> = [
     { heading: "Overview", body: project.overview },
@@ -84,7 +85,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </h1>
           </div>
 
-          <PhotoSlot photo={photo} variant="polaroid" rotate={2} className="w-44 self-start justify-self-start lg:justify-self-end" />
+          <PhotoSlot
+            id={photoId}
+            photo={photo}
+            variant="polaroid"
+            rotate={2}
+            className="w-44 self-start justify-self-start lg:justify-self-end"
+          />
         </div>
       </header>
 

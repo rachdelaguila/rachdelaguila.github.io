@@ -16,7 +16,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const href = `/work/${project.slug}`;
   const titleId = `project-${project.slug}-title`;
   const number = String(index + 1).padStart(2, "0");
-  const photo = getPhoto(`work-${project.slug}` as PhotoId);
+  const photoId = `work-${project.slug}` as PhotoId;
+  const photo = getPhoto(photoId);
   const rotate = ROTATIONS[index % ROTATIONS.length];
 
   return (
@@ -25,7 +26,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className="group relative flex h-full flex-col border border-ink bg-cream p-5 sm:p-6"
     >
       <div className="flex items-start justify-between gap-4">
-        <PhotoSlot photo={photo} variant="polaroid" rotate={rotate} className="w-36 sm:w-40" />
+        <PhotoSlot
+          id={photoId}
+          photo={photo}
+          variant="polaroid"
+          rotate={rotate}
+          className="w-36 sm:w-40"
+        />
         <span className="font-chunk text-3xl text-ink/60">{number}</span>
       </div>
 

@@ -72,10 +72,10 @@ labels + olive ticker (WANDA), scrapbook layering.
   a subtle site-wide paper `.grain` (~3% multiply), 1px ink hairlines. No
   geometric shapes, checkerboards, chrome, or stickers except one gold sun stamp
   in the footer. Exactly **1 ticker** (olive) and **1 stamp**.
-- **Photography** is the system (`src/content/photos.ts` manifest +
-  `src/components/PhotoSlot.tsx`): b&w or warm-muted, mono caption credit; real
-  files live in `/public/photos/`. Until then, same-dimension placeholders keep
-  the layout final. **Never use stock photography.**
+- **Photography / editorial art** is the system (`src/content/photos.ts`
+  manifest + `src/components/PhotoSlot.tsx` + `EditorialArt.tsx`): b&w or
+  warm-muted photos when supplied; until then, same-dimension editorial
+  graphics keep the layout final. **Never use stock photography.**
 - **Verify:** squint test — the dominant element per section is the serif
   display or a photo, never a colored shape. AA contrast on all body pairs
   (Lighthouse a11y target 95+); respect `prefers-reduced-motion`.
@@ -98,8 +98,8 @@ labels + olive ticker (WANDA), scrapbook layering.
 - `src/content/projects.ts` — the selected-work entries; each generates a card
   and a `/work/<slug>` page.
 
-Placeholders marked `TODO: confirm` should be verified with the site owner, not
-guessed.
+Do not invent credentials, metrics, or outcomes. Keep uncertain language
+qualitative and truthful.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

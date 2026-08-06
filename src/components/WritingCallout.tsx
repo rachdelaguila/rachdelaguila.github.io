@@ -48,7 +48,12 @@ export function WritingCallout() {
             </a>
           </div>
 
-          <PhotoSlot photo={thumb} variant="plain" className="self-start" />
+          <PhotoSlot
+            id="writing"
+            photo={thumb}
+            variant="plain"
+            className="self-start"
+          />
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { getPhoto } from "@/content/photos";
+import { EditorialArt } from "@/components/EditorialArt";
 import { ArrowRightIcon } from "@/components/icons";
 import { Eyebrow, ScriptNote } from "@/components/ui";
 
@@ -44,10 +45,10 @@ export function Hero() {
           </span>
         </h1>
 
-        {/* Photo block — pulled up on desktop so its top edge tucks behind
+        {/* Visual block — pulled up on desktop so its top edge tucks behind
             the blush line (≥90% crossover). */}
-        <div className="hero-overlap relative z-0 overflow-hidden border border-ink bg-[#6f645b]">
-          <div className="flex aspect-[16/9] items-center justify-center">
+        <div className="hero-overlap relative z-0 overflow-hidden border border-ink bg-[#5c524a]">
+          <div className="aspect-[16/9]">
             {photo.src ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -58,9 +59,7 @@ export function Hero() {
                 className="h-full w-full grayscale object-cover"
               />
             ) : (
-              <span className="mono border border-dashed border-cream/70 px-3 py-1.5 text-[11px] text-cream">
-                Photo · your shot, b&amp;w, full-bleed
-              </span>
+              <EditorialArt id="hero" className="h-full w-full" />
             )}
           </div>
 
